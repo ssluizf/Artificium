@@ -5,7 +5,7 @@ export const metadata = {
 
 // TO DO: Sidebar, TopBar
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;

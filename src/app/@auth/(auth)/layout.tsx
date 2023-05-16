@@ -3,7 +3,7 @@ export const metadata = {
   description: "Let's get creative",
 };
 
-export default function RootLayout({
+export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
