@@ -1,9 +1,9 @@
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes } from "react"
 
 type InputProps = {
-  label: string;
-  icon: string;
-};
+  label: string
+  icon?: string
+}
 
 export default function Input({
   label,
@@ -12,7 +12,7 @@ export default function Input({
   return (
     <div>
       <label htmlFor={props.id}>{label}</label>
-      <input {...props} />
+      <input data-test="input-label" {...props} />
     </div>
-  );
+  )
 }

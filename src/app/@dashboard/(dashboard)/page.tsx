@@ -1,3 +1,3 @@
 export default function Artificium() {
-  return <main>Artificium</main>;
+  return <main>Artificium</main>
 }

@@ -1,3 +1,3 @@
 export default function Chat() {
-  return <main>Chat</main>;
+  return <main>Chat</main>
 }

@@ -1,3 +1,3 @@
 export default function Library() {
-  return <main>Library</main>;
+  return <main>Library</main>
 }

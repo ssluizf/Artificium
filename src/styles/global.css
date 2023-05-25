@@ -1,3 +1,64 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
+
+@layer components {
+  .btn--primary {
+    @apply bg-stem-green-500 hover:bg-stem-green-400 active:bg-stem-green-300
+     text-day-blue-900;
+  }
+  .btn--secondary {
+    @apply border-solid border-4 bg-transparent
+    border-stem-green-500 hover:border-stem-green-400 active:border-stem-green-300
+    text-stem-green-500 hover:text-stem-green-400 active:text-stem-green-300;
+  }
+  .btn--tertiary {
+    @apply bg-noble-black-600 hover:bg-noble-black-500 active:bg-noble-black-400
+     text-noble-black-300 hover:text-noble-black-200 active:text-noble-black-100;
+  }
+  .btn--ghost {
+    @apply bg-transparent
+    text-noble-black-400 hover:text-noble-black-300 active:text-noble-black-200;
+  }
+  .btn--glass {
+    @apply bg-glass-fill shadow-glass-effects
+    text-noble-black-300 hover:text-noble-black-200 active:text-noble-black-100;
+  }
+  .btn--large {
+    @apply h-12 px-6 text-body-l-semibold rounded-xl;
+  }
+  .btn--medium {
+    @apply h-10 px-4 text-body-m-semibold rounded-[10px];
+  }
+  .btn--small {
+    @apply h-8 px-3 text-body-s-semibold rounded-lg;
+  }
+
+  .icon--large {
+    @apply h-6 w-6;
+  }
+  .icon--medium {
+    @apply h-5 w-5;
+  }
+  .icon--small {
+    @apply h-4 w-4;
+  }
+
+  .btn-icon {
+    @apply px-0;
+  }
+  .btn-icon svg path {
+    @apply stroke-current;
+  }
+  .btn-icon.btn--large {
+    @apply w-12;
+  }
+  .btn-icon.btn--medium {
+    @apply w-10;
+  }
+  .btn-icon.btn--small {
+    @apply w-8;
+  }
+}

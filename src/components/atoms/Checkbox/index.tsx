@@ -1,8 +1,8 @@
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes } from "react"
 
 type CheckboxProps = {
-  label: string;
-};
+  label: string
+}
 
 export default function Checkbox({
   label,
@@ -11,7 +11,9 @@ export default function Checkbox({
   return (
     <div>
       <input type="checkbox" {...props}></input>
-      <label htmlFor={props.id}>{label}</label>
+      <label data-test="checkbox-label" htmlFor={props.id}>
+        {label}
+      </label>
     </div>
-  );
+  )
 }
