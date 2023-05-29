@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from "react"
 import { size, variant } from "@/typings"
 
 type ButtonProps = {
-  label?: string
+  label: string
   size?: size
   variant?: variant
 }
