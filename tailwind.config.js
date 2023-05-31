@@ -2,9 +2,20 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    fontFamily: {
+      "plus-jakarta-sans": ['"Plus Jakarta Sans"', "sans-serif"],
+    },
     backgroundImage: {
       "glass-fill":
         "linear-gradient(117.58deg, rgba(215, 237, 237, 0.16) -47.79%, rgba(204, 235, 235, 0) 100%)",
+      "green-blue-day-blue-600":
+        "linear-gradient(225deg, #3045C9 0%, #65BEDA 45.31%, #9AD37F 100%)",
+      "day-blue-blue-green-600":
+        "linear-gradient(45deg, #3045C9 0%, #65BEDA 45.31%, #9AD37F 100%)",
+      "green-blue-day-blue-500":
+        "linear-gradient(225deg, #4D62E5 0%, #87DDEE 45.31%, #B6F09C 100%)",
+      "day-blue-blue-green-500":
+        "linear-gradient(45deg, #4D62E5 0%, #87DDEE 45.31%, #B6F09C 100%)",
     },
     boxShadow: {
       "glass-effects":
@@ -391,5 +402,5 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 }

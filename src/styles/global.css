@@ -4,6 +4,12 @@
 
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply font-plus-jakarta-sans;
+  }
+}
+
 @layer components {
   .btn--primary {
     @apply bg-stem-green-500 hover:bg-stem-green-400 active:bg-stem-green-300
@@ -46,11 +52,14 @@
     @apply h-4 w-4;
   }
 
+  svg path {
+    @apply stroke-current;
+  }
+  .svg--bold path {
+    @apply stroke-[4px];
+  }
   .btn-icon {
     @apply px-0;
-  }
-  .btn-icon svg path {
-    @apply stroke-current;
   }
   .btn-icon.btn--large {
     @apply w-12;

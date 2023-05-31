@@ -1,4 +1,3 @@
-import "@/styles/global.css"
 import React from "react"
 import SocialLoginButton from "./index"
 

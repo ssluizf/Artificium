@@ -1,3 +1,4 @@
+import { SVGAttributes } from "react"
 import Icons from "@/assets/icons"
 import { size } from "@/typings"
 
@@ -8,7 +9,11 @@ type IconProps = {
   size?: size
 }
 
-export default function Icon({ name, size = "medium", ...props }: IconProps) {
+export default function Icon({
+  name,
+  size = "medium",
+  ...props
+}: IconProps & SVGAttributes<HTMLInputElement>) {
   const iconClasses = {
     large: "icon--large",
     medium: "icon--medium",
