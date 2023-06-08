@@ -1,3 +1,5 @@
+"use client"
+
 import { SVGAttributes } from "react"
 import Icons from "@/assets/icons"
 import { size } from "@/typings"
@@ -22,6 +24,10 @@ export default function Icon({
   const IconComponent = Icons[name]
 
   return (
-    <IconComponent data-test="icon" className={iconClasses[size]} {...props} />
+    <IconComponent
+      data-test="icon"
+      className={`icon ${iconClasses[size]}`}
+      {...props}
+    />
   )
 }

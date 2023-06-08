@@ -1,8 +1,10 @@
 import { Plus_Jakarta_Sans } from "next/font/google"
+import "@/styles/global.css"
 
 const baseFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-plus-jakarta-sans",
 })
 
 export default function RootLayout({
@@ -15,7 +17,7 @@ export default function RootLayout({
   const isLoggedIn = false
 
   return (
-    <html lang="en" className={baseFont.className}>
+    <html lang="en" className={baseFont.variable}>
       <body>{isLoggedIn ? dashboard : auth}</body>
     </html>
   )

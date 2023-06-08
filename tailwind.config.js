@@ -3,7 +3,7 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     fontFamily: {
-      "plus-jakarta-sans": ['"Plus Jakarta Sans"', "sans-serif"],
+      "plus-jakarta-sans": ["var(--font-plus-jakarta-sans)"],
     },
     backgroundImage: {
       "glass-fill":
@@ -16,10 +16,14 @@ module.exports = {
         "linear-gradient(225deg, #4D62E5 0%, #87DDEE 45.31%, #B6F09C 100%)",
       "day-blue-blue-green-500":
         "linear-gradient(45deg, #4D62E5 0%, #87DDEE 45.31%, #B6F09C 100%)",
+      "green-blue-500": "linear-gradient(225deg, #82DBF7 0%, #B6F09C 100%)",
+      "blue-green-500": "linear-gradient(45deg, #82DBF7 0%, #B6F09C 100%)",
     },
     boxShadow: {
       "glass-effects":
         "0px 24px 24px -16px rgba(0, 0, 0, 0.12), inset 16px 24px 64px -24px rgba(255, 255, 255, 0.08), inset 0px 8px 12px rgba(255, 255, 255, 0.08)",
+      "outline-noble-black": "0px 0px 0px 4px rgba(54, 58, 61, 0.24)",
+      "outline-heisenberg-blue": "0px 0px 0px 4px rgba(132, 220, 245, 0.24)",
     },
     colors: {
       transparent: "transparent",

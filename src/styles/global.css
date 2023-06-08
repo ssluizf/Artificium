@@ -6,7 +6,7 @@
 
 @layer base {
   html {
-    @apply font-plus-jakarta-sans;
+    @apply font-plus-jakarta-sans bg-noble-black-700;
   }
 }
 
@@ -42,6 +42,10 @@
     @apply h-8 px-3 text-body-s-semibold rounded-lg;
   }
 
+  .icon svg path {
+    @apply stroke-current;
+  }
+
   .icon--large {
     @apply h-6 w-6;
   }
@@ -52,9 +56,6 @@
     @apply h-4 w-4;
   }
 
-  svg path {
-    @apply stroke-current;
-  }
   .svg--bold path {
     @apply stroke-[4px];
   }
