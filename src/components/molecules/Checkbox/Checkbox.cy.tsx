@@ -1,11 +1,13 @@
 import React from "react"
-import Checkbox from "./index"
+import { composeStories } from "@storybook/react"
+
+import * as stories from "./Checkbox.stories"
+
+const { Default } = composeStories(stories)
 
 describe("<Checkbox />", () => {
   it("renders with label", () => {
-    const labelSample = "Checkbox Label"
-
-    cy.mount(<Checkbox label={labelSample} />)
-    cy.getByData("checkbox-label").should("have.text", labelSample)
+    cy.mount(<Default {...Default.args} />)
+    cy.getByData("checkbox-label").should("have.text", "Checkbox Label")
   })
 })

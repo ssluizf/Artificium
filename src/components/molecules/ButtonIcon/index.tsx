@@ -32,7 +32,7 @@ export default function ButtonIcon({
       className={`btn-icon ${btnClasses[variant]} ${btnClasses[size]} flex items-center justify-center w-min whitespace-nowrap`}
       {...props}
     >
-      <Icon className="icon" name={icon} size={size} />
+      <Icon name={icon} size={size} />
     </button>
   )
 }

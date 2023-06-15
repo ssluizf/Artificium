@@ -4,6 +4,7 @@ import Icon, { iconName } from "@/components/atoms/Icon"
 
 type InputProps = {
   label?: string
+  placeholder?: string
   variant?: "warning" | "error" | "success"
   icon?: iconName
   hint?: string
@@ -33,10 +34,9 @@ export default function Input({
         focus-within:!shadow-outline-heisenberg-blue
         hover:shadow-outline-noble-black"
       >
-        <div className="flex items-center w-full h-12 space-x-3 px-4 bg-noble-black-600 rounded-lg">
-          {icon && <Icon name={icon} size="large" />}
+        <div className="text-noble-black-400 flex items-center w-full h-12 space-x-3 px-4 bg-noble-black-600 rounded-lg">
+          {icon && <Icon data-test="input-icon" name={icon} size="large" />}
           <input
-            data-test="input"
             className="w-full h-full bg-transparent outline-none
               text-body-l-medium text-noble-black-200 placeholder:text-noble-black-300
               p-0 border-0 focus:shadow-none focus:ring-0"

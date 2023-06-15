@@ -1,20 +1,21 @@
 import React from "react"
-import Input from "./index"
+import { composeStories } from "@storybook/react"
+
+import * as stories from "./Input.stories"
+
+const { Label, Hint, Icon } = composeStories(stories)
 
 describe("<Input />", () => {
-  it("renders with defaultProps", () => {
-    cy.mount(<Input />)
-  })
   it("renders with label", () => {
-    const labelSample = "Input Label"
-
-    cy.mount(<Input label={labelSample} />)
-    cy.getByData("input-label").should("have.text", labelSample)
+    cy.mount(<Label {...Label.args} />)
+    cy.getByData("input-label").should("have.text", "Input Label")
   })
   it("renders with hint", () => {
-    const hintSample = "Hint text"
-
-    cy.mount(<Input hint={hintSample} />)
-    cy.getByData("input-hint").should("have.text", hintSample)
+    cy.mount(<Hint {...Hint.args} />)
+    cy.getByData("input-hint").should("have.text", "Input Hint")
+  })
+  it("renders with icon", () => {
+    cy.mount(<Icon {...Icon.args} />)
+    cy.getByData("input-icon")
   })
 })

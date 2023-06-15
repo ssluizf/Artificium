@@ -1,18 +1,20 @@
 import React from "react"
-import SocialLoginButton from "./index"
+import { composeStories } from "@storybook/react"
+
+import * as stories from "./SocialLoginButton.stories"
+
+const { Google, Apple } = composeStories(stories)
 
 describe("<SocialLoginButton />", () => {
-  const labelSample = "Continue with Sample"
-
   it("renders with label and google icon", () => {
-    cy.mount(<SocialLoginButton label={labelSample} icon="google" />)
-    cy.getByData("button").should("have.text", labelSample)
+    cy.mount(<Google {...Google.args} />)
+    cy.getByData("button").should("have.text", "Google Account")
     cy.getByData("icon").should("have.class", "icon--medium")
   })
 
   it("renders with label and apple icon", () => {
-    cy.mount(<SocialLoginButton label={labelSample} icon="apple" />)
-    cy.getByData("button").should("have.text", labelSample)
+    cy.mount(<Apple {...Apple.args} />)
+    cy.getByData("button").should("have.text", "Apple Account")
     cy.getByData("icon").should("have.class", "icon--large")
   })
 })
