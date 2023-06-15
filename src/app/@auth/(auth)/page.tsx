@@ -12,9 +12,9 @@ import Checkbox from "@/components/molecules/Checkbox"
 export default function Login() {
   return (
     <main className="grid grid-cols-2">
-      <div className="h-screen flex flex-col justify-between">
-        <Logo name="logoSymbolGradient" className="h-8 w-8 mt-12 ml-12" />
-        <div className="mx-28">
+      <div className="h-full min-h-screen grid grid-cols-1 auto-rows-min justify-between">
+        <Logo name="logoSymbolGradient" className="h-8 w-8 mt-12 ml-12 mb-32" />
+        <div className="mx-28 mb-32">
           <div className="space-y-6">
             <p className="text-heading-xl-regular text-noble-black-0">
               {"Let's get "}
@@ -71,7 +71,7 @@ export default function Login() {
       <Image
         src={sideImage}
         alt="Side Image"
-        className="h-screen rounded-s-3xl object-cover"
+        className="h-full min-h-screen rounded-s-3xl object-cover"
       />
     </main>
   )
