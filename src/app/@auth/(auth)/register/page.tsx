@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo } from "react"
+import { useMemo, useState, useEffect } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
@@ -14,6 +14,7 @@ import Button from "@/components/atoms/Button"
 import Logo from "@/components/atoms/Logo"
 import Input from "@/components/molecules/Input"
 import Checkbox from "@/components/molecules/Checkbox"
+import Snackbar from "@/components/molecules/Snackbar"
 
 const schema = yup
   .object({
@@ -27,6 +28,7 @@ const schema = yup
       .string()
       .required("Required field")
       .oneOf([yup.ref("password")], "Passwords must match"),
+    agreeWithTerms: yup.boolean().required().isTrue(),
   })
   .required()
 
@@ -44,25 +46,41 @@ export default function Register() {
 
   const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
 
+  const [snackbarOpen, setSnackbarOpen] = useState(false)
+
   const inputVariant = useMemo(
     () => (isSubmitted ? "error" : "warning"),
     [isSubmitted]
   )
 
+  useEffect(() => {
+    setSnackbarOpen(Boolean(errors.agreeWithTerms))
+  }, [errors.agreeWithTerms])
+
   return (
     <main className="grid grid-cols-11">
+      <Snackbar
+        variant="warning"
+        open={snackbarOpen}
+        onClose={() => setSnackbarOpen(false)}
+        autoHideDuration={4000}
+      >
+        <span className=" text-noble-black-0">{"Must agree with "}</span>
+        <span className="text-body-s-semibold">{"Terms and Conditions "}</span>
+        <span className="text-noble-black-0">{"to continue."}</span>
+      </Snackbar>
       <div
-        className="col-span-7 h-full min-h-screen
-        grid grid-cols-1 auto-rows-min justify-between"
+        className="col-span-7 grid h-full
+        min-h-screen auto-rows-min grid-cols-1 justify-between"
       >
         <div
-          className="flex items-center justify-between
-          mt-12 mb-32 mx-12"
+          className="mx-12 mb-32 mt-12
+          flex items-center justify-between"
         >
           <Logo name="logoSymbolGradient" className="h-8 w-8" />
           <Link
             href="/"
-            className="text-body-l-semibold text-transparent bg-blue-green-500 bg-clip-text"
+            className="bg-blue-green-500 bg-clip-text text-body-l-semibold text-transparent"
           >
             Log In
           </Link>
@@ -71,8 +89,8 @@ export default function Register() {
           <p className="text-heading-xl-regular text-noble-black-0">
             Connect with your team and bring your creative ideas to life.
           </p>
-          <form className="space-y-12 mt-16" onSubmit={handleSubmit(onSubmit)}>
-            <div className="grid gap-6 grid-cols-2 grid-rows-2">
+          <form className="mt-16 space-y-12" onSubmit={handleSubmit(onSubmit)}>
+            <div className="grid grid-cols-2 grid-rows-2 gap-6">
               <Input
                 label="First name"
                 placeholder="First name"
@@ -108,11 +126,11 @@ export default function Register() {
                 {...register("confirmPassword")}
               />
             </div>
-            <Checkbox>
+            <Checkbox {...register("agreeWithTerms")}>
               {"I agree with "}
               <Link
                 href="/register"
-                className="text-body-l-semibold text-transparent bg-blue-green-500 bg-clip-text"
+                className="bg-blue-green-500 bg-clip-text text-body-l-semibold text-transparent"
               >
                 Terms and conditions
               </Link>
@@ -121,8 +139,8 @@ export default function Register() {
           </form>
         </div>
         <div
-          className="flex items-center justify-between 
-          mb-12 mx-12 text-body-m-medium text-noble-black-300"
+          className="mx-12 mb-12 flex 
+          items-center justify-between text-body-m-medium text-noble-black-300"
         >
           <p>Artificium.app © 2023</p>
           <p>Privacy Policy</p>

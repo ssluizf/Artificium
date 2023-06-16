@@ -7,7 +7,7 @@ const { Default, Secondary, Tertiary, Ghost, Glass, Large, Small } =
   composeStories(stories)
 
 describe("<ButtonIcon />", () => {
-  it("renders defaultProps", () => {
+  it("renders with default props", () => {
     cy.mount(<Default {...Default.args} />)
 
     cy.getByData("button-icon").should("have.class", "btn-icon")

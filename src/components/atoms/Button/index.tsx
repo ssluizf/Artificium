@@ -27,7 +27,7 @@ export default function Button({
   return (
     <button
       data-test="button"
-      className={`${btnClasses[variant]} ${btnClasses[size]} flex items-center w-min whitespace-nowrap`}
+      className={`${btnClasses[variant]} ${btnClasses[size]} flex w-min items-center whitespace-nowrap`}
       {...props}
     >
       <span>{label}</span>

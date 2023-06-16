@@ -29,7 +29,7 @@ export default function ButtonIcon({
   return (
     <button
       data-test="button-icon"
-      className={`btn-icon ${btnClasses[variant]} ${btnClasses[size]} flex items-center justify-center w-min whitespace-nowrap`}
+      className={`btn-icon ${btnClasses[variant]} ${btnClasses[size]} flex w-min items-center justify-center whitespace-nowrap`}
       {...props}
     >
       <Icon name={icon} size={size} />

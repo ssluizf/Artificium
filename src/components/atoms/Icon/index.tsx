@@ -26,6 +26,7 @@ export default function Icon({
   return (
     <IconComponent
       data-test="icon"
+      name={name}
       className={`${iconClasses[size]}`}
       {...props}
     />

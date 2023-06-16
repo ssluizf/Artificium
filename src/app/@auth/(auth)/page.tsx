@@ -12,13 +12,13 @@ import Checkbox from "@/components/molecules/Checkbox"
 export default function Login() {
   return (
     <main className="grid grid-cols-2">
-      <div className="h-full min-h-screen grid grid-cols-1 auto-rows-min justify-between">
-        <Logo name="logoSymbolGradient" className="h-8 w-8 mt-12 ml-12 mb-32" />
+      <div className="grid h-full min-h-screen auto-rows-min grid-cols-1 justify-between">
+        <Logo name="logoSymbolGradient" className="mb-32 ml-12 mt-12 h-8 w-8" />
         <div className="mx-28 mb-32">
           <div className="space-y-6">
             <p className="text-heading-xl-regular text-noble-black-0">
               {"Let's get "}
-              <span className="text-heading-xl-bold text-transparent bg-day-blue-blue-green-500 bg-clip-text">
+              <span className="bg-day-blue-blue-green-500 bg-clip-text text-heading-xl-bold text-transparent">
                 creative!
               </span>
             </p>
@@ -26,7 +26,7 @@ export default function Login() {
               Log in to Artificium to start creating magic.
             </p>
           </div>
-          <div className="space-y-12 mt-16">
+          <div className="mt-16 space-y-12">
             <div className="space-y-6">
               <Input autoComplete="email" placeholder="E-mail" icon="mail" />
               <Input
@@ -38,14 +38,14 @@ export default function Login() {
             </div>
             <div className="flex justify-between">
               <Checkbox>Remember me</Checkbox>
-              <p className="text-body-l-semibold text-transparent bg-blue-green-500 bg-clip-text">
+              <p className="bg-blue-green-500 bg-clip-text text-body-l-semibold text-transparent">
                 Forgot Password?
               </p>
             </div>
             <Button label="Log in" size="large" />
-            <div className="flex w-full space-x-4 justify-between items-center text-noble-black-400">
+            <div className="flex w-full items-center justify-between space-x-4 text-noble-black-400">
               <hr className="w-full" />
-              <span className="text-body-s-medium whitespace-nowrap">
+              <span className="whitespace-nowrap text-body-s-medium">
                 or continue with
               </span>
               <hr className="w-full" />
@@ -61,7 +61,7 @@ export default function Login() {
             {"Don’t have an account? "}
             <Link
               href="/register"
-              className="text-transparent bg-blue-green-500 bg-clip-text"
+              className="bg-blue-green-500 bg-clip-text text-transparent"
             >
               Sign Up
             </Link>

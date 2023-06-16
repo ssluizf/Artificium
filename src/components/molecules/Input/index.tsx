@@ -46,26 +46,28 @@ const Input = forwardRef(function Input(
       )}
       <div
         data-test="input-container"
-        className={`rounded-lg overflow-hidden ${inputClasses[variant]} peer`}
+        className={`overflow-hidden rounded-lg ${inputClasses[variant]} group peer`}
       >
         <div
-          className="group text-noble-black-400 flex items-center
-            w-full h-12 space-x-3 px-4 bg-noble-black-600 rounded-lg"
+          className="flex h-12 w-full items-center space-x-3
+            rounded-lg bg-noble-black-600 px-4 text-noble-black-400"
         >
           {icon && <Icon data-test="input-icon" name={icon} size="large" />}
           <input
+            data-test="input"
             ref={ref}
             type={passwordVisible ? "text" : type}
-            className="w-full h-full bg-transparent outline-none
-              text-body-l-medium text-noble-black-200 placeholder:text-noble-black-300
-              p-0 border-0 focus:shadow-none focus:ring-0"
+            className="focus:shadow-none h-full w-full border-0
+              bg-transparent p-0 text-body-l-medium
+              text-noble-black-200 outline-none placeholder:text-noble-black-300 focus:ring-0"
             {...props}
           />
           {type === "password" && (
             <button
+              data-test="input-eye-button"
               type="button"
               onClick={() => setPasswordVisible(!passwordVisible)}
-              className="hidden group-hover:block"
+              className="hidden group-focus-within:block"
             >
               <Icon name={passwordVisible ? "eye" : "eyeCross"} size="large" />
             </button>
@@ -77,8 +79,8 @@ const Input = forwardRef(function Input(
           className="flex items-center space-x-3
           text-body-m-regular text-noble-black-400
           peer-[.input--error]:text-red-power-600
-          peer-[.input--warning]:text-happy-orange-600
-          peer-[.input--success]:text-electric-green-600"
+          peer-[.input--success]:text-electric-green-600
+          peer-[.input--warning]:text-happy-orange-600"
         >
           <Icon name="infoCircleSolid" size="small" />
           <span data-test="input-hint">{hint}</span>

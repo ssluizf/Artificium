@@ -30,7 +30,7 @@ export default function SocialLoginButton({
   return (
     <button
       data-test="button"
-      className={`btn--tertiary btn--large w-full space-x-3 flex items-center justify-center whitespace-nowrap`}
+      className={`btn--tertiary btn--large flex w-full items-center justify-center space-x-3 whitespace-nowrap`}
       {...props}
     >
       <IconComponent data-test="icon" className={iconClasses[icon]} />

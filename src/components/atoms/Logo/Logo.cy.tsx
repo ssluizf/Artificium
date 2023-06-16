@@ -6,7 +6,7 @@ import * as stories from "./Logo.stories"
 const { Default } = composeStories(stories)
 
 describe("<Logo/>", () => {
-  it("renders logo with default props", () => {
+  it("renders with default props", () => {
     cy.mount(<Default {...Default.args} />)
     cy.getByData("icon")
   })

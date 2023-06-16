@@ -1,43 +1,48 @@
-import { InputHTMLAttributes, ReactNode } from "react"
+"use client"
+
+import { ForwardedRef, InputHTMLAttributes, ReactNode, forwardRef } from "react"
 import Icon from "@/components/atoms/Icon"
 
 type CheckboxProps = {
   children: ReactNode
 }
 
-export default function Checkbox({
-  children,
-  ...props
-}: CheckboxProps & InputHTMLAttributes<HTMLInputElement>) {
+const Checkbox = forwardRef(function Checkbox(
+  { children, ...props }: CheckboxProps & InputHTMLAttributes<HTMLInputElement>,
+  ref: ForwardedRef<HTMLInputElement>
+) {
   return (
     <div className="flex items-center space-x-4">
       <label
-        className="relative cursor-pointer text-day-blue-900
-          w-6 h-6 flex items-center"
+        className="relative flex h-6
+          w-6 cursor-pointer items-center text-day-blue-900"
         htmlFor="checkbox-field"
       >
         <input
+          ref={ref}
           id="checkbox-field"
           data-test="checkbox"
           type="checkbox"
-          className="peer w-full h-full cursor-pointer focus:ring-offset-0 focus:ring-transparent
-            bg-noble-black-600 border border-solid border-noble-black-500 rounded
-            hover:border-2 checked:bg-day-blue-blue-green-500 checked:text-day-blue-900"
+          className="peer h-full w-full cursor-pointer rounded border
+            border-solid border-noble-black-500 bg-noble-black-600 checked:bg-day-blue-blue-green-500 checked:text-day-blue-900
+            hover:border-2 focus:ring-transparent focus:ring-offset-0"
           {...props}
         ></input>
         <Icon
           name="check"
-          className="icon--bold invisible peer-checked:visible w-3 h-3
-            absolute top-0 bottom-0 right-0 left-0 m-auto"
+          className="icon--bold invisible absolute bottom-0 left-0
+            right-0 top-0 m-auto h-3 w-3 peer-checked:visible"
         />
       </label>
       <label
         data-test="checkbox-label"
-        className="select-none cursor-pointer text-body-l-medium text-noble-black-200"
+        className="cursor-pointer select-none text-body-l-medium text-noble-black-200"
         htmlFor="checkbox-field"
       >
         {children}
       </label>
     </div>
   )
-}
+})
+
+export default Checkbox

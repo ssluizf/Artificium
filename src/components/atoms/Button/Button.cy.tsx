@@ -7,7 +7,7 @@ const { Default, Secondary, Tertiary, Ghost, Glass, Large, Small } =
   composeStories(stories)
 
 describe("<Button />", () => {
-  it("renders with label and default props", () => {
+  it("renders with default props", () => {
     cy.mount(<Default {...Default.args} />)
 
     cy.getByData("button").should("have.text", "Button")

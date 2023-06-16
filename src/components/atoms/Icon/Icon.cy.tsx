@@ -6,7 +6,7 @@ import * as stories from "./Icon.stories"
 const { Default, Large, Small } = composeStories(stories)
 
 describe("<Icon />", () => {
-  it("renders icon with default props", () => {
+  it("renders with default props", () => {
     cy.mount(<Default {...Default.args} />)
     cy.getByData("icon").should("have.class", "icon--medium")
   })

@@ -45,3 +45,9 @@ export const Success: Story = {
     variant: "success",
   },
 }
+
+export const Password: Story = {
+  args: {
+    type: "password",
+  },
+}
