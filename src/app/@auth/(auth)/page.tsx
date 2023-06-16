@@ -37,12 +37,12 @@ export default function Login() {
               />
             </div>
             <div className="flex justify-between">
-              <Checkbox label="Remember me" />
+              <Checkbox>Remember me</Checkbox>
               <p className="text-body-l-semibold text-transparent bg-blue-green-500 bg-clip-text">
                 Forgot Password?
               </p>
             </div>
-            <Button label="Log in" />
+            <Button label="Log in" size="large" />
             <div className="flex w-full space-x-4 justify-between items-center text-noble-black-400">
               <hr className="w-full" />
               <span className="text-body-s-medium whitespace-nowrap">

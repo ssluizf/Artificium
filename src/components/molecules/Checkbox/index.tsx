@@ -1,12 +1,12 @@
-import { InputHTMLAttributes } from "react"
+import { InputHTMLAttributes, ReactNode } from "react"
 import Icon from "@/components/atoms/Icon"
 
 type CheckboxProps = {
-  label: string
+  children: ReactNode
 }
 
 export default function Checkbox({
-  label,
+  children,
   ...props
 }: CheckboxProps & InputHTMLAttributes<HTMLInputElement>) {
   return (
@@ -27,7 +27,7 @@ export default function Checkbox({
         ></input>
         <Icon
           name="check"
-          className=" svg--bold invisible peer-checked:visible w-3 h-3
+          className="icon--bold invisible peer-checked:visible w-3 h-3
             absolute top-0 bottom-0 right-0 left-0 m-auto"
         />
       </label>
@@ -36,7 +36,7 @@ export default function Checkbox({
         className="select-none cursor-pointer text-body-l-medium text-noble-black-200"
         htmlFor="checkbox-field"
       >
-        {label}
+        {children}
       </label>
     </div>
   )

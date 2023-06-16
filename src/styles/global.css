@@ -8,6 +8,10 @@
   html {
     @apply font-plus-jakarta-sans bg-noble-black-700 text-noble-black-400;
   }
+
+  input::-ms-reveal {
+    display: none;
+  }
 }
 
 @layer components {
@@ -43,10 +47,6 @@
     @apply h-8 px-3 text-body-s-semibold rounded-lg before:rounded-lg;
   }
 
-  .icon {
-    @apply [&_path]:stroke-current;
-  }
-
   .icon--large {
     @apply h-6 w-6;
   }
@@ -57,7 +57,7 @@
     @apply h-4 w-4;
   }
 
-  .svg--bold {
+  .icon--bold {
     @apply [&_path]:stroke-[4px];
   }
   .btn-icon {
@@ -71,5 +71,26 @@
   }
   .btn-icon.btn--small {
     @apply w-8;
+  }
+
+  .input--default {
+    @apply bg-noble-black-500 focus-within:bg-green-blue-day-blue-500 p-[2px]
+        focus-within:!shadow-outline-heisenberg-blue
+        hover:shadow-outline-noble-black;
+  }
+
+  .input--error {
+    @apply bg-red-power-600 p-[2px]
+        hover:shadow-outline-red-power;
+  }
+
+  .input--warning {
+    @apply bg-happy-orange-600 p-[2px]
+        hover:shadow-outline-happy-orange;
+  }
+
+  .input--success {
+    @apply bg-electric-green-600 p-[2px]
+        hover:shadow-outline-eletric-green;
   }
 }

@@ -24,6 +24,9 @@ module.exports = {
         "0px 24px 24px -16px rgba(0, 0, 0, 0.12), inset 16px 24px 64px -24px rgba(255, 255, 255, 0.08), inset 0px 8px 12px rgba(255, 255, 255, 0.08)",
       "outline-noble-black": "0px 0px 0px 4px rgba(54, 58, 61, 0.24)",
       "outline-heisenberg-blue": "0px 0px 0px 4px rgba(132, 220, 245, 0.24)",
+      "outline-red-power": "0px 0px 0px 4px rgba(208, 48, 47, 0.24)",
+      "outline-happy-orange": "0px 0px 0px 4px rgba(226, 111, 32, 0.24)",
+      "outline-eletric-green": "0px 0px 0px 4px rgba(74, 201, 126, 0.24)",
     },
     colors: {
       transparent: "transparent",

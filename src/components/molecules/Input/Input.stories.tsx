@@ -27,3 +27,21 @@ export const Icon: Story = {
     placeholder: "Input Icon",
   },
 }
+
+export const Error: Story = {
+  args: {
+    variant: "error",
+  },
+}
+
+export const Warning: Story = {
+  args: {
+    variant: "warning",
+  },
+}
+
+export const Success: Story = {
+  args: {
+    variant: "success",
+  },
+}
