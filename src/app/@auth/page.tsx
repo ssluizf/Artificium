@@ -4,16 +4,21 @@ import Link from "next/link"
 import sideImage from "@/assets/images/illustrations-abstract-01.png"
 
 import Button from "@/components/atoms/Button"
-import Logo from "@/components/atoms/Logo"
 import SocialLoginButton from "@/components/atoms/SocialLoginButton"
 import Input from "@/components/molecules/Input"
 import Checkbox from "@/components/molecules/Checkbox"
+import AuthHeader from "@/components/molecules/AuthHeader"
+
+export const metadata = {
+  title: "Login",
+  description: "Let's get creative",
+}
 
 export default function Login() {
   return (
     <main className="grid grid-cols-2">
       <div className="grid h-full min-h-screen auto-rows-min grid-cols-1 justify-between">
-        <Logo name="logoSymbolGradient" className="mb-32 ml-12 mt-12 h-8 w-8" />
+        <AuthHeader />
         <div className="mx-28 mb-32">
           <div className="space-y-6">
             <p className="text-heading-xl-regular text-noble-black-0">

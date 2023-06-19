@@ -4,17 +4,14 @@ import { useMemo, useState, useEffect } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-
-import Image from "next/image"
 import Link from "next/link"
 
-import sideImage from "@/assets/images/illustrations-abstract-03.png"
-
 import Button from "@/components/atoms/Button"
-import Logo from "@/components/atoms/Logo"
+import PrivacyPolicyFooter from "@/components/atoms/PrivacyPoliceFooter"
 import Input from "@/components/molecules/Input"
 import Checkbox from "@/components/molecules/Checkbox"
 import Snackbar from "@/components/molecules/Snackbar"
+import AuthHeader from "@/components/molecules/AuthHeader"
 
 const schema = yup
   .object({
@@ -58,7 +55,7 @@ export default function Register() {
   }, [errors.agreeWithTerms])
 
   return (
-    <main className="grid grid-cols-11">
+    <>
       <Snackbar
         variant="warning"
         open={snackbarOpen}
@@ -73,18 +70,7 @@ export default function Register() {
         className="col-span-7 grid h-full
         min-h-screen auto-rows-min grid-cols-1 justify-between"
       >
-        <div
-          className="mx-12 mb-32 mt-12
-          flex items-center justify-between"
-        >
-          <Logo name="logoSymbolGradient" className="h-8 w-8" />
-          <Link
-            href="/"
-            className="bg-blue-green-500 bg-clip-text text-body-l-semibold text-transparent"
-          >
-            Log In
-          </Link>
-        </div>
+        <AuthHeader showLoginLink />
         <div className="mx-28 mb-32">
           <p className="text-heading-xl-regular text-noble-black-0">
             Connect with your team and bring your creative ideas to life.
@@ -138,19 +124,8 @@ export default function Register() {
             <Button label="Create free account" size="large" />
           </form>
         </div>
-        <div
-          className="mx-12 mb-12 flex 
-          items-center justify-between text-body-m-medium text-noble-black-300"
-        >
-          <p>Artificium.app © 2023</p>
-          <p>Privacy Policy</p>
-        </div>
+        <PrivacyPolicyFooter />
       </div>
-      <Image
-        src={sideImage}
-        alt="Side Image"
-        className="col-span-4 h-full min-h-screen rounded-s-3xl object-cover"
-      />
-    </main>
+    </>
   )
 }

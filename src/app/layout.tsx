@@ -14,11 +14,11 @@ export default function RootLayout({
   dashboard: React.ReactNode
   auth: React.ReactNode
 }) {
-  const isLoggedIn = false
+  const isConnectedToWorkspace = false
 
   return (
     <html lang="en" className={baseFont.variable}>
-      <body>{isLoggedIn ? dashboard : auth}</body>
+      <body>{isConnectedToWorkspace ? dashboard : auth}</body>
     </html>
   )
 }
