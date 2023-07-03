@@ -8,6 +8,7 @@ import SocialLoginButton from "@/components/atoms/SocialLoginButton"
 import Input from "@/components/molecules/Input"
 import Checkbox from "@/components/molecules/Checkbox"
 import AuthHeader from "@/components/molecules/AuthHeader"
+import Divider from "@/components/atoms/Divider"
 
 export const metadata = {
   title: "Login",
@@ -17,7 +18,7 @@ export const metadata = {
 export default function Login() {
   return (
     <main className="grid grid-cols-2">
-      <div className="grid h-full min-h-screen auto-rows-min grid-cols-1 justify-between">
+      <div className="flex h-full min-h-screen flex-col justify-between">
         <AuthHeader />
         <div className="mx-28 mb-32">
           <div className="space-y-6">
@@ -48,13 +49,7 @@ export default function Login() {
               </p>
             </div>
             <Button label="Log in" size="large" />
-            <div className="flex w-full items-center justify-between space-x-4 text-noble-black-400">
-              <hr className="w-full" />
-              <span className="whitespace-nowrap text-body-s-medium">
-                or continue with
-              </span>
-              <hr className="w-full" />
-            </div>
+            <Divider>or continue with</Divider>
             <div className="flex space-x-6">
               <SocialLoginButton label="Google Account" icon="google" />
               <SocialLoginButton label="Apple Account" icon="apple" />

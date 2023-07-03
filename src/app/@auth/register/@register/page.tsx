@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState, useEffect } from "react"
+import { useMemo, useState, useEffect, useContext } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
@@ -12,6 +12,7 @@ import Input from "@/components/molecules/Input"
 import Checkbox from "@/components/molecules/Checkbox"
 import Snackbar from "@/components/molecules/Snackbar"
 import AuthHeader from "@/components/molecules/AuthHeader"
+import { CurrentUserContext, CurrentUserContextType } from "../layout"
 
 const schema = yup
   .object({
@@ -41,7 +42,9 @@ export default function Register() {
     resolver: yupResolver(schema),
   })
 
-  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
+  const { setCurrentUser } = useContext(
+    CurrentUserContext
+  ) as CurrentUserContextType
 
   const [snackbarOpen, setSnackbarOpen] = useState(false)
 
@@ -53,6 +56,10 @@ export default function Register() {
   useEffect(() => {
     setSnackbarOpen(Boolean(errors.agreeWithTerms))
   }, [errors.agreeWithTerms])
+
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    setCurrentUser({ name: data.firstName })
+  }
 
   return (
     <>
@@ -66,10 +73,7 @@ export default function Register() {
         <span className="text-body-s-semibold">{"Terms and Conditions "}</span>
         <span className="text-noble-black-0">{"to continue."}</span>
       </Snackbar>
-      <div
-        className="col-span-7 grid h-full
-        min-h-screen auto-rows-min grid-cols-1 justify-between"
-      >
+      <div className="col-span-7 flex h-full min-h-screen flex-col justify-between">
         <AuthHeader showLoginLink />
         <div className="mx-28 mb-32">
           <p className="text-heading-xl-regular text-noble-black-0">

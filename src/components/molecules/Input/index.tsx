@@ -11,6 +11,7 @@ type InputProps = {
   icon?: iconName
   hint?: string
   chips?: boolean
+  endAdornment?: React.ReactNode
 }
 
 const Input = forwardRef(function Input(
@@ -20,6 +21,8 @@ const Input = forwardRef(function Input(
     icon,
     hint,
     type,
+    className,
+    endAdornment,
     ...props
   }: InputProps & InputHTMLAttributes<HTMLInputElement>,
   ref: ForwardedRef<HTMLInputElement>
@@ -34,7 +37,7 @@ const Input = forwardRef(function Input(
   const [passwordVisible, setPasswordVisible] = useState(false)
 
   return (
-    <div className="space-y-4">
+    <div className="w-full space-y-4">
       {label && (
         <label
           data-test="input-label"
@@ -57,9 +60,9 @@ const Input = forwardRef(function Input(
             data-test="input"
             ref={ref}
             type={passwordVisible ? "text" : type}
-            className="focus:shadow-none h-full w-full border-0
+            className={`${className} focus:shadow-none h-full w-full border-0
               bg-transparent p-0 text-body-l-medium
-              text-noble-black-200 outline-none placeholder:text-noble-black-300 focus:ring-0"
+              text-noble-black-200 outline-none placeholder:text-noble-black-300 focus:ring-0`}
             {...props}
           />
           {type === "password" && (
@@ -72,6 +75,7 @@ const Input = forwardRef(function Input(
               <Icon name={passwordVisible ? "eye" : "eyeCross"} size="large" />
             </button>
           )}
+          {endAdornment}
         </div>
       </div>
       {hint && (

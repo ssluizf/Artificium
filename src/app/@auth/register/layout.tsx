@@ -1,5 +1,16 @@
+"use client"
+
+import { createContext, useState } from "react"
 import Image from "next/image"
+
 import sideImage from "@/assets/images/illustrations-abstract-03.png"
+
+export type CurrentUserContextType = {
+  currentUser: { name: string }
+  setCurrentUser: (user: any) => void
+}
+
+export const CurrentUserContext = createContext<CurrentUserContextType | {}>({})
 
 export default function Layout({
   workspace,
@@ -8,16 +19,23 @@ export default function Layout({
   workspace: React.ReactNode
   register: React.ReactNode
 }) {
-  const isLoggedIn = false
+  const [currentUser, setCurrentUser] = useState({ name: "Luiz" })
 
   return (
-    <div className="grid grid-cols-11">
-      {isLoggedIn ? workspace : register}
-      <Image
-        src={sideImage}
-        alt="Side Image"
-        className="col-span-4 h-full min-h-screen rounded-s-3xl object-cover"
-      />
-    </div>
+    <CurrentUserContext.Provider
+      value={{
+        currentUser,
+        setCurrentUser,
+      }}
+    >
+      <div className="grid h-full grid-cols-11">
+        {Boolean(currentUser) ? workspace : register}
+        <Image
+          src={sideImage}
+          alt="Side Image"
+          className="col-span-4 h-full min-h-screen rounded-s-3xl object-cover"
+        />
+      </div>
+    </CurrentUserContext.Provider>
   )
 }

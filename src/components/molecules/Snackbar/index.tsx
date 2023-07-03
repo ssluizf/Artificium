@@ -49,7 +49,7 @@ export default function Snackbar({
         mt-4 flex h-12 w-min items-center
         space-x-4 whitespace-nowrap rounded-lg
         bg-noble-black-900 px-4 text-body-s-medium
-        transition-opacity duration-150 ease-in-out`}
+        transition-opacity duration-200 ease-in-out`}
     >
       <Icon data-test="snackbar-icon" name={variantIcons[variant]} />
       <div>{children}</div>

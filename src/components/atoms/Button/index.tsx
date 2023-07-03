@@ -11,6 +11,7 @@ export default function Button({
   label,
   size = "medium",
   variant = "primary",
+  className,
   ...props
 }: ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
   const btnClasses = {
@@ -27,7 +28,7 @@ export default function Button({
   return (
     <button
       data-test="button"
-      className={`${btnClasses[variant]} ${btnClasses[size]} flex w-min items-center whitespace-nowrap`}
+      className={`${className} ${btnClasses[variant]} ${btnClasses[size]} flex items-center justify-center whitespace-nowrap`}
       {...props}
     >
       <span>{label}</span>
