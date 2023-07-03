@@ -23,7 +23,7 @@ export default function Request() {
       <div className="flex">
         {persons.map((person, index) => (
           <Avatar key={`person-${index}`} src={person} alt="Avatar"
-            className="w-20 h-20 -m-4 border-8 border-noble-black-700" />
+            className="w-20 h-20 -m-4 border-8 border-noble-black-700 rounded-[28px]" />
         ))}
       </div>
       <div className="space-y-6 text-center">

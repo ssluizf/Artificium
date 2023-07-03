@@ -11,7 +11,7 @@ export default function Layout({
   join: React.ReactNode
   request: React.ReactNode
 }) {
-  const hasAccessToWorkspace = false
+  const hasAccessToWorkspace = true
 
   return (
     <main className="grid grid-cols-2">
