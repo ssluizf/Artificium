@@ -1,5 +1,8 @@
 import Image from "next/image"
-import sideImage from "@/assets/images/illustrations-abstract-03.png"
+import sideImage from "@/assets/images/illustrations-abstract-04.png"
+
+import AuthHeader from "@/components/molecules/AuthHeader"
+import PrivacyPolicyFooter from "@/components/atoms/PrivacyPoliceFooter"
 
 export default function Layout({
   join,
@@ -11,13 +14,17 @@ export default function Layout({
   const hasAccessToWorkspace = false
 
   return (
-    <div className="grid grid-cols-11">
-      {hasAccessToWorkspace ? join : request}
+    <main className="grid grid-cols-2">
+      <div className="flex h-full min-h-screen flex-col justify-between">
+        <AuthHeader />
+        {hasAccessToWorkspace ? join : request}
+        <PrivacyPolicyFooter />
+      </div>
       <Image
         src={sideImage}
         alt="Side Image"
-        className="col-span-4 h-full min-h-screen rounded-s-3xl object-cover"
+        className="h-full min-h-screen rounded-s-3xl object-cover"
       />
-    </div>
+    </main>
   )
 }

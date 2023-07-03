@@ -28,14 +28,14 @@ export default function Layout({
         setCurrentUser,
       }}
     >
-      <div className="grid h-full grid-cols-11">
+      <main className="grid h-full grid-cols-11">
         {Boolean(currentUser) ? workspace : register}
         <Image
           src={sideImage}
           alt="Side Image"
           className="col-span-4 h-full min-h-screen rounded-s-3xl object-cover"
         />
-      </div>
+      </main>
     </CurrentUserContext.Provider>
   )
 }

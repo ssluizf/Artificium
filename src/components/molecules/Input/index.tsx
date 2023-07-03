@@ -21,7 +21,7 @@ const Input = forwardRef(function Input(
     icon,
     hint,
     type,
-    className,
+    className = "",
     endAdornment,
     ...props
   }: InputProps & InputHTMLAttributes<HTMLInputElement>,

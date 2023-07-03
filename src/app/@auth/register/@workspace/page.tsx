@@ -24,17 +24,23 @@ export default function Workspace() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitted },
+    formState: { errors, isDirty, isSubmitted },
   } = useForm<FormData>({
     mode: "onBlur",
     resolver: yupResolver(schema),
   })
 
-  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
+  const onSubmitJoin: SubmitHandler<FormData> = (data) => console.log(data)
+  const onSubmitCreate: SubmitHandler<FormData> = (data) => console.log(data)
 
   const inputVariant = useMemo(
     () => (isSubmitted ? "error" : "warning"),
     [isSubmitted]
+  )
+
+  const isDisabled = useMemo(
+    () => !!errors.workspaceURL || !isDirty,
+    [errors.workspaceURL, isDirty]
   )
 
   return (
@@ -51,7 +57,10 @@ export default function Workspace() {
               new one to collaborate with your team.
             </p>
           </div>
-          <form className="mt-16 space-y-12" onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="mt-16 space-y-12"
+            onSubmit={handleSubmit(onSubmitJoin)}
+          >
             <div className="flex justify-between space-x-6">
               <Input
                 placeholder="Your workspace URL"
@@ -72,7 +81,9 @@ export default function Workspace() {
               label="Create new Workspace"
               size="large"
               type="button"
-              variant="tertiary"
+              onClick={handleSubmit(onSubmitCreate)}
+              variant={isDisabled ? "tertiary" : "primary"}
+              disabled={isDisabled}
               className="w-full"
             />
           </form>
