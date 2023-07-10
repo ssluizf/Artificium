@@ -34,12 +34,14 @@ export default function Snackbar({
   autoHideDuration = 3000,
 }: SnackbarProps) {
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      onClose()
-    }, autoHideDuration)
-
-    return () => clearTimeout(timeout)
-  }, [onClose, autoHideDuration])
+    if (open) {
+      const timeout = setTimeout(() => {
+        onClose()
+      }, autoHideDuration)
+  
+      return () => clearTimeout(timeout)
+    }
+  }, [open, onClose, autoHideDuration])
 
   return (
     <div

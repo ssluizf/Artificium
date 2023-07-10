@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState, useEffect } from "react"
+import { useMemo } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
@@ -8,7 +8,6 @@ import * as yup from "yup"
 import Button from "@/components/atoms/Button"
 import PrivacyPolicyFooter from "@/components/atoms/PrivacyPoliceFooter"
 import Input from "@/components/molecules/Input"
-import Snackbar from "@/components/molecules/Snackbar"
 import AuthHeader from "@/components/molecules/AuthHeader"
 import Divider from "@/components/atoms/Divider"
 

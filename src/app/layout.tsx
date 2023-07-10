@@ -8,17 +8,17 @@ const baseFont = Plus_Jakarta_Sans({
 })
 
 export default function RootLayout({
-  dashboard,
+  authenticated,
   auth,
 }: {
-  dashboard: React.ReactNode
+  authenticated: React.ReactNode
   auth: React.ReactNode
 }) {
-  const isConnectedToWorkspace = false
+  const isAuthenticated = false
 
   return (
     <html lang="en" className={baseFont.variable}>
-      <body>{isConnectedToWorkspace ? dashboard : auth}</body>
+      <body>{isAuthenticated ? authenticated : auth}</body>
     </html>
   )
 }

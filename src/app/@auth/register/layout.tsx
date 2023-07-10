@@ -6,20 +6,16 @@ import Image from "next/image"
 import sideImage from "@/assets/images/illustrations-abstract-03.png"
 
 export type CurrentUserContextType = {
-  currentUser: { name: string }
+  currentUser: { email: string }
   setCurrentUser: (user: any) => void
 }
 
 export const CurrentUserContext = createContext<CurrentUserContextType | {}>({})
 
-export default function Layout({
-  workspace,
-  register,
-}: {
-  workspace: React.ReactNode
-  register: React.ReactNode
+export default function Layout({ children }: {
+  children: React.ReactNode
 }) {
-  const [currentUser, setCurrentUser] = useState({ name: "Luiz" })
+  const [currentUser, setCurrentUser] = useState(null)
 
   return (
     <CurrentUserContext.Provider
@@ -29,7 +25,7 @@ export default function Layout({
       }}
     >
       <main className="grid h-full grid-cols-11">
-        {Boolean(currentUser) ? workspace : register}
+        {children}
         <Image
           src={sideImage}
           alt="Side Image"
