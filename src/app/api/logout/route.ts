@@ -1,10 +1,15 @@
-import { NextRequest } from "next/server";
+import { cookies } from "next/headers"
+import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
-  return new Response("Hello, Next.js!", {
-    status: 200,
-    headers: {
-      "Set-Cookie": `session=; Max-Age=${-1}`,
-    },
-  })
+  const options = {
+    name: "session",
+    value: "",
+    maxAge: -1,
+  }
+
+  /* @ts-ignore */
+  cookies().set(options)
+  
+  return NextResponse.json({}, { status: 200 })
 }
