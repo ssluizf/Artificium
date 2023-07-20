@@ -1,19 +1,11 @@
 "use client"
 
-import React, { useMemo, useState, useEffect, useContext } from "react"
+import React, { useMemo } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import Link from "next/link"
 
-import Button from "@/components/atoms/Button"
-import PrivacyPolicyFooter from "@/components/atoms/PrivacyPoliceFooter"
-import Divider from "@/components/atoms/Divider"
-import SocialLoginButton from "@/components/atoms/SocialLoginButton"
 import Input from "@/components/molecules/Input"
-import Checkbox from "@/components/molecules/Checkbox"
-import Snackbar from "@/components/molecules/Snackbar"
-import AuthHeader from "@/components/molecules/AuthHeader"
 
 const schema = yup
   .object({

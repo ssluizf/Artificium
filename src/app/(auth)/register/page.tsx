@@ -1,13 +1,11 @@
 "use client"
 
-import { useMemo, useState, useEffect, useContext } from "react"
+import { useMemo, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useForm, SubmitHandler } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-
-import { CurrentUserContext, CurrentUserContextType } from "./layout"
 
 import Button from "@/components/atoms/Button"
 import PrivacyPolicyFooter from "@/components/atoms/PrivacyPoliceFooter"
@@ -47,10 +45,6 @@ export default function Register() {
     resolver: yupResolver(schema),
   })
 
-  const { setCurrentUser } = useContext(
-    CurrentUserContext
-  ) as CurrentUserContextType
-
   const [termsErrorOpen, setTermsErrorOpen] = useState(false)
   const [userSuccessOpen, setUserSuccessOpen] = useState(false)
 
@@ -64,7 +58,6 @@ export default function Register() {
   }, [errors.agreeWithTerms])
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    setCurrentUser({ email: data.email })
     setUserSuccessOpen(true)
   }
 

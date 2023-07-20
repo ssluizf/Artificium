@@ -8,6 +8,11 @@ const baseFont = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
 })
 
+export const metadata = {
+  title: "Artificium",
+  description: "Let's get creative",
+}
+
 export default function RootLayout({
   children,
 }: {

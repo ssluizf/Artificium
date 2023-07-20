@@ -1,4 +1,5 @@
 "use client"
+
 import { useMemo } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
@@ -19,11 +20,6 @@ import Input from "@/components/molecules/Input"
 import Checkbox from "@/components/molecules/Checkbox"
 import AuthHeader from "@/components/molecules/AuthHeader"
 import Divider from "@/components/atoms/Divider"
-
-export const metadata = {
-  title: "Login",
-  description: "Let's get creative",
-}
 
 const schema = yup
   .object({
