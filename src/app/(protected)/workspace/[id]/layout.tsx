@@ -15,7 +15,7 @@ export type CurrentUserContextType = {
 
 export const CurrentUserContext = createContext<CurrentUserContextType | {}>({})
 
-export default function Layout({
+export default function WorkspaceLayout({
   join,
   request,
 }: {

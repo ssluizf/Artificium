@@ -1,4 +1,5 @@
 import { Plus_Jakarta_Sans } from "next/font/google"
+
 import "@/styles/global.css"
 
 const baseFont = Plus_Jakarta_Sans({
@@ -8,17 +9,13 @@ const baseFont = Plus_Jakarta_Sans({
 })
 
 export default function RootLayout({
-  authenticated,
-  auth,
+  children,
 }: {
-  authenticated: React.ReactNode
-  auth: React.ReactNode
+  children: React.ReactNode
 }) {
-  const isAuthenticated = false
-
   return (
     <html lang="en" className={baseFont.variable}>
-      <body>{isAuthenticated ? authenticated : auth}</body>
+      <body>{children}</body>
     </html>
   )
 }

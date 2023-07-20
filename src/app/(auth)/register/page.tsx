@@ -2,10 +2,10 @@
 
 import { useMemo, useState, useEffect, useContext } from "react"
 import { useRouter } from "next/navigation"
-import { useForm, SubmitHandler } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
 import Link from "next/link"
+import { useForm, SubmitHandler } from "react-hook-form"
+import * as yup from "yup"
+import { yupResolver } from "@hookform/resolvers/yup"
 
 import { CurrentUserContext, CurrentUserContextType } from "./layout"
 
@@ -24,7 +24,7 @@ const schema = yup
     password: yup
       .string()
       .required("Required field")
-      .min(8, "Password is too short - should be 8 chars minimum"),
+      .min(6, "Password is too short - should be 6 chars minimum"),
     confirmPassword: yup
       .string()
       .required("Required field")
@@ -36,7 +36,7 @@ const schema = yup
 type FormData = yup.InferType<typeof schema>
 
 export default function Register() {
-  const router = useRouter();
+  const router = useRouter()
 
   const {
     register,
@@ -65,12 +65,12 @@ export default function Register() {
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     setCurrentUser({ email: data.email })
-    setUserSuccessOpen(true);
+    setUserSuccessOpen(true)
   }
 
   const handleUserSuccessClose = () => {
     setUserSuccessOpen(false)
-    router.push("/");
+    router.push("/login")
   }
 
   return (

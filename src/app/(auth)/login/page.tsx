@@ -1,5 +1,15 @@
+"use client"
+import { useMemo } from "react"
+import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
+
+import * as yup from "yup"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useForm, SubmitHandler } from "react-hook-form"
+
+import { signInWithEmailAndPassword } from "@firebase/auth"
+import { auth } from "@/config/firebase-config"
 
 import sideImage from "@/assets/images/illustrations-abstract-01.png"
 
@@ -15,7 +25,51 @@ export const metadata = {
   description: "Let's get creative",
 }
 
+const schema = yup
+  .object({
+    email: yup.string().required("Required field"),
+    password: yup.string().required("Required field"),
+  })
+  .required()
+
+type FormData = yup.InferType<typeof schema>
+
 export default function Login() {
+  const router = useRouter()
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitted },
+  } = useForm<FormData>({
+    mode: "onBlur",
+    resolver: yupResolver(schema),
+  })
+
+  const inputVariant = useMemo(
+    () => (isSubmitted ? "error" : "warning"),
+    [isSubmitted]
+  )
+
+  const onSubmit: SubmitHandler<FormData> = async ({ email, password }) => {
+    await signInWithEmailAndPassword(auth, email, password).then(
+      async (userCredential) => {
+        if (!userCredential) return
+
+        await fetch("/api/login", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${await userCredential.user.getIdToken()}`,
+          },
+        }).then((response) => {
+          if (response.status === 200) {
+            router.push("/dashboard")
+          }
+        })
+      }
+    )
+  }
+
   return (
     <main className="grid grid-cols-2">
       <div className="flex h-full min-h-screen flex-col justify-between">
@@ -32,14 +86,24 @@ export default function Login() {
               Log in to Artificium to start creating magic.
             </p>
           </div>
-          <div className="mt-16 space-y-12">
+          <form className="mt-16 space-y-12" onSubmit={handleSubmit(onSubmit)}>
             <div className="space-y-6">
-              <Input autoComplete="email" placeholder="E-mail" icon="mail" />
+              <Input
+                autoComplete="email"
+                placeholder="E-mail"
+                icon="mail"
+                variant={errors.email && inputVariant}
+                hint={errors.email?.message}
+                {...register("email")}
+              />
               <Input
                 type="password"
                 autoComplete="current-password"
                 placeholder="Password"
                 icon="padlock"
+                variant={errors.password && inputVariant}
+                hint={errors.password?.message}
+                {...register("password")}
               />
             </div>
             <div className="flex justify-between">
@@ -48,13 +112,13 @@ export default function Login() {
                 Forgot Password?
               </p>
             </div>
-            <Button label="Log in" size="large" />
+            <Button type="submit" label="Log in" size="large" />
             <Divider>or continue with</Divider>
             <div className="flex space-x-6">
               <SocialLoginButton label="Google Account" icon="google" />
               <SocialLoginButton label="Apple Account" icon="apple" />
             </div>
-          </div>
+          </form>
         </div>
         <div className="mb-12 ml-12">
           <p className="text-body-l-semibold text-noble-black-400">

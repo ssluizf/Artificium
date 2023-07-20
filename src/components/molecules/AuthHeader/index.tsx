@@ -14,7 +14,7 @@ export default function AuthHeader({ showLoginLink }: AuthHeaderProps) {
       <Logo name="logoSymbolGradient" className="h-8 w-8" />
       {showLoginLink && (
         <Link
-          href="/"
+          href="/login"
           className="bg-blue-green-500 bg-clip-text text-body-l-semibold text-transparent"
         >
           Log In
