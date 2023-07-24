@@ -1,11 +1,18 @@
 "use client"
 
-import { useMemo, useState, useEffect } from "react"
+import { useMemo, useState, useEffect, useCallback } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useForm, SubmitHandler } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
+
+import {
+  createUserWithEmailAndPassword,
+  signInWithRedirect,
+  getRedirectResult,
+} from "@firebase/auth"
+import { auth, provider } from "@/config/firebase-config"
 
 import Button from "@/components/atoms/Button"
 import PrivacyPolicyFooter from "@/components/atoms/PrivacyPoliceFooter"
@@ -53,12 +60,40 @@ export default function Register() {
     [isSubmitted]
   )
 
+  const fetchLogin = useCallback(
+    async (userCredential) => {
+      if (!userCredential) return
+
+      await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${await userCredential.user.getIdToken()}`,
+        },
+      }).then((response) => {
+        if (response.status === 200) {
+          router.push("/dashboard")
+        }
+      })
+    },
+    [router]
+  )
+
   useEffect(() => {
     setTermsErrorOpen(Boolean(errors.agreeWithTerms))
   }, [errors.agreeWithTerms])
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  useEffect(() => {
+    getRedirectResult(auth).then(fetchLogin)
+  }, [fetchLogin])
+
+  const onSubmit: SubmitHandler<FormData> = async ({ email, password }) => {
+    await createUserWithEmailAndPassword(auth, email, password).then(fetchLogin)
+
     setUserSuccessOpen(true)
+  }
+
+  const signInWithGoogle = async () => {
+    await signInWithRedirect(auth, provider)
   }
 
   const handleUserSuccessClose = () => {
@@ -94,7 +129,12 @@ export default function Register() {
             Connect with your team and bring your creative ideas to life.
           </p>
           <form className="mt-16 space-y-12" onSubmit={handleSubmit(onSubmit)}>
-            <SocialLoginButton label="Sign up with Google" icon="google" />
+            <SocialLoginButton
+              type="button"
+              onClick={signInWithGoogle}
+              label="Sign up with Google"
+              icon="google"
+            />
             <Divider>or continue with e-mail</Divider>
             <div className="grid grid-cols-2 grid-rows-2 gap-6">
               <div className="col-span-2">
