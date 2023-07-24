@@ -26,14 +26,14 @@ export async function POST(request: NextRequest, response: NextResponse) {
         maxAge: expiresIn,
         httpOnly: true,
         secure: true,
-      };
+      }
 
       /* @ts-ignore */
-      cookies().set(options);
+      cookies().set(options)
     }
   }
 
-  return NextResponse.json({}, { status: 200 })
+  return NextResponse.json({ message: "Success" }, { status: 200 })
 }
 
 export async function GET(request: NextRequest) {

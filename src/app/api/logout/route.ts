@@ -5,7 +5,9 @@ export async function POST(request: NextRequest) {
   const options = {
     name: "session",
     value: "",
-    maxAge: -1,
+    maxAge: 0,
+    httpOnly: true,
+    secure: true
   }
 
   /* @ts-ignore */
