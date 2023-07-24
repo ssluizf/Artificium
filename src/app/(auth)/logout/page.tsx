@@ -1,16 +1,29 @@
-import { redirect } from "next/navigation"
+"use client"
+
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 
 import { auth } from "@/config/firebase-config"
 import { signOut } from "firebase/auth"
 
-export default async function Logout() {
-  await signOut(auth)
+export default function Logout() {
+  const router = useRouter()
 
-  const response = await fetch(`${process.env.BASE_URL}/api/logout`, {
-    method: "POST",
-  })
+  useEffect(() => {
+    async function logout() {
+      await signOut(auth)
 
-  if (response.status === 200) {
-    redirect("/login")
-  }
+      const response = await fetch("/api/logout", {
+        method: "POST",
+      })
+
+      if (response.status === 200) {
+        router.push("/login")
+      }
+    }
+
+    logout()
+  }, [router])
+
+  return <></>
 }
