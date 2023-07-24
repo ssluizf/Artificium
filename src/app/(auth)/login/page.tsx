@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo } from "react"
+import { useEffect, useCallback, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
@@ -9,8 +9,12 @@ import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm, SubmitHandler } from "react-hook-form"
 
-import { signInWithEmailAndPassword } from "@firebase/auth"
-import { auth } from "@/config/firebase-config"
+import {
+  signInWithEmailAndPassword,
+  signInWithRedirect,
+  getRedirectResult,
+} from "@firebase/auth"
+import { auth, provider } from "@/config/firebase-config"
 
 import sideImage from "@/assets/images/illustrations-abstract-01.png"
 
@@ -47,23 +51,31 @@ export default function Login() {
     [isSubmitted]
   )
 
-  const onSubmit: SubmitHandler<FormData> = async ({ email, password }) => {
-    await signInWithEmailAndPassword(auth, email, password).then(
-      async (userCredential) => {
-        if (!userCredential) return
+  const fetchLogin = useCallback(async (userCredential) => {
+    if (!userCredential) return
 
-        await fetch("/api/login", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${await userCredential.user.getIdToken()}`,
-          },
-        }).then((response) => {
-          if (response.status === 200) {
-            router.push("/dashboard")
-          }
-        })
+    await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${await userCredential.user.getIdToken()}`,
+      },
+    }).then((response) => {
+      if (response.status === 200) {
+        router.push("/dashboard")
       }
-    )
+    })
+  }, [router])
+
+  useEffect(() => {
+    getRedirectResult(auth).then(fetchLogin)
+  }, [fetchLogin])
+
+  const onSubmit: SubmitHandler<FormData> = async ({ email, password }) => {
+    await signInWithEmailAndPassword(auth, email, password).then(fetchLogin)
+  }
+
+  const signInWithGoogle = async () => {
+    await signInWithRedirect(auth, provider)
   }
 
   return (
@@ -111,7 +123,12 @@ export default function Login() {
             <Button type="submit" label="Log in" size="large" />
             <Divider>or continue with</Divider>
             <div className="flex space-x-6">
-              <SocialLoginButton label="Google Account" icon="google" />
+              <SocialLoginButton
+                type="button"
+                onClick={signInWithGoogle}
+                label="Google Account"
+                icon="google"
+              />
               <SocialLoginButton label="Apple Account" icon="apple" />
             </div>
           </form>
