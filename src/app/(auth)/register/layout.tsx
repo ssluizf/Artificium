@@ -1,6 +1,12 @@
 import Image from "next/image"
-
+import { Metadata } from 'next'
+ 
 import sideImage from "@/assets/images/illustrations-abstract-03.png"
+
+export const metadata: Metadata = {
+  title: 'Register',
+  description: 'Create an account',
+}
 
 export default function Layout({ children }: {
   children: React.ReactNode
