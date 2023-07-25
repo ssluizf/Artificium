@@ -51,20 +51,23 @@ export default function Login() {
     [isSubmitted]
   )
 
-  const fetchLogin = useCallback(async (userCredential) => {
-    if (!userCredential) return
+  const fetchLogin = useCallback(
+    async (userCredential) => {
+      if (!userCredential) return
 
-    await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${await userCredential.user.getIdToken()}`,
-      },
-    }).then((response) => {
-      if (response.status === 200) {
-        router.push("/dashboard")
-      }
-    })
-  }, [router])
+      await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${await userCredential.user.getIdToken()}`,
+        },
+      }).then((response) => {
+        if (response.status === 200) {
+          router.push("/workspace")
+        }
+      })
+    },
+    [router]
+  )
 
   useEffect(() => {
     getRedirectResult(auth).then(fetchLogin)

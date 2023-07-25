@@ -71,7 +71,7 @@ export default function Register() {
         },
       }).then((response) => {
         if (response.status === 200) {
-          router.push("/dashboard")
+          router.push("/workspace")
         }
       })
     },
