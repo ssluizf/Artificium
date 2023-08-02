@@ -9,6 +9,8 @@
 <p align="center">
   <img src="./readme/Login.png" />
   <img src="./readme/Register 01.png" />
+  <img src="./readme/Register 02.png" />
+  <img src="./readme/Register 03.png" />
 </p>
 
 ## Overview
