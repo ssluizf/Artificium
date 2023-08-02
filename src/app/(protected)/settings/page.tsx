@@ -1,9 +1,14 @@
 "use client"
 
-import React, { useMemo } from "react"
+import React, { useMemo, useState } from "react"
+import { useRouter } from "next/navigation"
+
 import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+
+import { doc, setDoc } from "firebase/firestore"
+import { db, auth } from "@/config/firebase-config"
 
 import Modal from "@/components/atoms/Modal"
 import Input from "@/components/molecules/Input"
@@ -18,7 +23,11 @@ const schema = yup
 
 type FormData = yup.InferType<typeof schema>
 
-export default function Register() {
+export default function SettingsPage() {
+  const router = useRouter()
+  const [open, setOpen] = useState(true)
+  const [isSending, setIsSending] = useState(false)
+
   const {
     register,
     handleSubmit,
@@ -33,9 +42,29 @@ export default function Register() {
     [isSubmitted]
   )
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {}
+  const postUser = async (uid: string, firstName: string, lastName: string) => {
+    setIsSending(true)
 
-  return (
+    await setDoc(doc(db, "users", uid), {
+      firstName,
+      lastName,
+    })
+
+    setIsSending(false)
+  }
+
+  const onSubmit: SubmitHandler<FormData> = async ({ firstName, lastName }) => {
+    const user = auth.currentUser
+
+    if (user) {
+      await postUser(user?.uid, firstName, lastName)
+
+      router.push("/")
+      setOpen(false)
+    }
+  }
+
+  return open ? (
     <Modal>
       <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-5">
@@ -64,8 +93,8 @@ export default function Register() {
             {...register("lastName")}
           />
         </div>
-        <Button className="ml-auto" label="Continue" />
+        <Button className="ml-auto" label="Submit" isLoading={isSending} />
       </form>
     </Modal>
-  )
+  ) : null
 }

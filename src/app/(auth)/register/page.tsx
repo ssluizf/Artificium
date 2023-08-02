@@ -12,7 +12,8 @@ import {
   signInWithRedirect,
   getRedirectResult,
 } from "@firebase/auth"
-import { auth, provider } from "@/config/firebase-config"
+import { doc, getDoc } from "firebase/firestore"
+import { auth, db, provider } from "@/config/firebase-config"
 
 import Button from "@/components/atoms/Button"
 import PrivacyPolicyFooter from "@/components/atoms/PrivacyPoliceFooter"
@@ -60,8 +61,17 @@ export default function Register() {
     [isSubmitted]
   )
 
+  const fetchUser = useCallback(async (uid) => {
+    const docRef = doc(db, "users", uid)
+    const docSnap = await getDoc(docRef)
+
+    if (docSnap.exists()) {
+      return docSnap.data()
+    }
+  }, [])
+
   const fetchLogin = useCallback(
-    async (userCredential) => {
+    async (userCredential: any) => {
       if (!userCredential) return
 
       await fetch("/api/login", {
@@ -69,15 +79,21 @@ export default function Register() {
         headers: {
           Authorization: `Bearer ${await userCredential.user.getIdToken()}`,
         },
-      }).then((response) => {
+      }).then(async (response) => {
         if (response.status === 200) {
-          router.push("/workspace")
+          const userUid = await userCredential.user.uid
+          const user = await fetchUser(userUid)
+
+          if (user) {
+            router.push(`/${user.currWorkspaceId}/${user.currProjectId}`)
+          } else {
+            router.push("/")
+          }
         }
       })
     },
-    [router]
+    [router, fetchUser]
   )
-
   useEffect(() => {
     setTermsErrorOpen(Boolean(errors.agreeWithTerms))
   }, [errors.agreeWithTerms])
@@ -175,7 +191,12 @@ export default function Register() {
                 Terms and conditions
               </Link>
             </Checkbox>
-            <Button type="submit" label="Create free account" size="large" />
+            <Button
+              className="w-full"
+              type="submit"
+              label="Create free account"
+              size="large"
+            />
           </form>
         </div>
         <PrivacyPolicyFooter />

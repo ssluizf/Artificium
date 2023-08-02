@@ -6,7 +6,7 @@
 
 @layer base {
   html {
-    @apply font-plus-jakarta-sans bg-noble-black-700 text-noble-black-400;
+    @apply bg-noble-black-700 font-plus-jakarta-sans text-noble-black-400;
   }
 
   input::-ms-reveal {
@@ -16,35 +16,60 @@
 
 @layer components {
   .btn--primary {
-    @apply bg-stem-green-500 hover:bg-stem-green-400 active:bg-stem-green-300
-     text-day-blue-900;
+    @apply bg-stem-green-500 text-day-blue-900 hover:bg-stem-green-400
+     active:bg-stem-green-300;
   }
   .btn--secondary {
-    @apply bg-transparent relative before:border-solid
-    before:content-[''] before:border-4 before:absolute before:top-0 before:bottom-0 before:left-0 before:right-0
-    before:border-stem-green-500 hover:before:border-stem-green-400 active:before:border-stem-green-300
-    text-stem-green-500 hover:text-stem-green-400 active:text-stem-green-300;
+    @apply relative bg-transparent text-stem-green-500
+    before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:border-4 before:border-solid
+    before:border-stem-green-500 before:content-[''] hover:text-stem-green-400
+    hover:before:border-stem-green-400 active:text-stem-green-300 active:before:border-stem-green-300;
   }
   .btn--tertiary {
-    @apply bg-noble-black-600 hover:bg-noble-black-500 active:bg-noble-black-400
-     text-noble-black-300 hover:text-noble-black-200 active:text-noble-black-100;
+    @apply bg-noble-black-600 text-noble-black-300 hover:bg-noble-black-500
+     hover:text-noble-black-200 active:bg-noble-black-400 active:text-noble-black-100;
   }
   .btn--ghost {
     @apply bg-transparent
     text-noble-black-400 hover:text-noble-black-300 active:text-noble-black-200;
   }
   .btn--glass {
-    @apply bg-glass-fill shadow-glass-effects
-    text-noble-black-300 hover:text-noble-black-200 active:text-noble-black-100;
+    @apply bg-glass-fill text-noble-black-300
+    shadow-glass-effects hover:text-noble-black-200 active:text-noble-black-100;
   }
   .btn--large {
-    @apply h-12 px-6 text-body-l-semibold rounded-xl before:rounded-xl;
+    @apply h-12 rounded-xl px-6 text-body-l-semibold before:rounded-xl;
   }
   .btn--medium {
-    @apply h-10 px-4 text-body-m-semibold rounded-[10px] before:rounded-[10px];
+    @apply h-10 rounded-[10px] px-4 text-body-m-semibold before:rounded-[10px];
   }
   .btn--small {
-    @apply h-8 px-3 text-body-s-semibold rounded-lg before:rounded-lg;
+    @apply h-8 rounded-lg px-3 text-body-s-semibold before:rounded-lg;
+  }
+
+  .btn__loading--primary {
+    @apply border-transparent border-r-day-blue-900 border-t-day-blue-900;
+  }
+  .btn__loading--secondary {
+    @apply border-transparent border-r-stem-green-500 border-t-stem-green-500;
+  }
+  .btn__loading--tertiary {
+    @apply border-transparent border-r-noble-black-300 border-t-noble-black-300;
+  }
+  .btn__loading--ghost {
+    @apply border-transparent border-r-noble-black-400 border-t-noble-black-400;
+  }
+  .btn__loading--glass {
+    @apply border-transparent border-r-noble-black-300 border-t-noble-black-300;
+  }
+  .btn__loading--large {
+    @apply h-8 w-8 border-4;
+  }
+  .btn__loading--medium {
+    @apply h-7 w-7 border-[3.5px];
+  }
+  .btn__loading--small {
+    @apply h-5 w-5 border-[3px];
   }
 
   .icon--large {
@@ -74,7 +99,7 @@
   }
 
   .input--default {
-    @apply bg-noble-black-500 focus-within:bg-green-blue-day-blue-500 p-[2px]
+    @apply bg-noble-black-500 p-[2px] focus-within:bg-green-blue-day-blue-500
         focus-within:!shadow-outline-heisenberg-blue
         hover:shadow-outline-noble-black;
   }

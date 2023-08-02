@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useCallback, useMemo } from "react"
+import { useEffect, useState, useCallback, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
@@ -14,7 +14,8 @@ import {
   signInWithRedirect,
   getRedirectResult,
 } from "@firebase/auth"
-import { auth, provider } from "@/config/firebase-config"
+import { doc, getDoc } from "firebase/firestore"
+import { auth, db, provider } from "@/config/firebase-config"
 
 import sideImage from "@/assets/images/illustrations-abstract-01.png"
 
@@ -36,6 +37,7 @@ type FormData = yup.InferType<typeof schema>
 
 export default function Login() {
   const router = useRouter()
+  const [isSending, setIsSending] = useState(false);
 
   const {
     register,
@@ -51,30 +53,50 @@ export default function Login() {
     [isSubmitted]
   )
 
-  const fetchLogin = useCallback(
-    async (userCredential) => {
+  const fetchUser = useCallback(async (uid) => {
+    const docRef = doc(db, "users", uid)
+    const docSnap = await getDoc(docRef)
+
+    if (docSnap.exists()) {
+      return docSnap.data()
+    }
+  }, [])
+
+  const postLogin = useCallback(
+    async (userCredential: any) => {
       if (!userCredential) return
+
+      setIsSending(true);
 
       await fetch("/api/login", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${await userCredential.user.getIdToken()}`,
         },
-      }).then((response) => {
+      }).then(async (response) => {
         if (response.status === 200) {
-          router.push("/workspace")
+          const userUid = await userCredential.user.uid
+          const userData = await fetchUser(userUid)
+
+          if (userData?.currWorkspaceId && userData?.currProjectId) {
+            router.push(`/${userData.currWorkspaceId}/${userData.currProjectId}`)
+          } else {
+            router.push("/")
+          }
         }
       })
+
+      setIsSending(false);
     },
-    [router]
+    [router, fetchUser]
   )
 
   useEffect(() => {
-    getRedirectResult(auth).then(fetchLogin)
-  }, [fetchLogin])
+    getRedirectResult(auth).then(postLogin)
+  }, [postLogin])
 
   const onSubmit: SubmitHandler<FormData> = async ({ email, password }) => {
-    await signInWithEmailAndPassword(auth, email, password).then(fetchLogin)
+    await signInWithEmailAndPassword(auth, email, password).then(postLogin)
   }
 
   const signInWithGoogle = async () => {
@@ -123,7 +145,13 @@ export default function Login() {
                 Forgot Password?
               </p>
             </div>
-            <Button type="submit" label="Log in" size="large" />
+            <Button
+              className="w-full"
+              type="submit"
+              label="Log in"
+              size="large"
+              isLoading={isSending}
+            />
             <Divider>or continue with</Divider>
             <div className="flex space-x-6">
               <SocialLoginButton

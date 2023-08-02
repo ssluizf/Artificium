@@ -7,9 +7,10 @@ import * as yup from "yup"
 
 import Button from "@/components/atoms/Button"
 import PrivacyPolicyFooter from "@/components/atoms/PrivacyPoliceFooter"
+import Divider from "@/components/atoms/Divider"
 import Input from "@/components/molecules/Input"
 import AuthHeader from "@/components/molecules/AuthHeader"
-import Divider from "@/components/atoms/Divider"
+import Register from "@/components/templates/Register"
 
 const schema = yup
   .object({
@@ -43,7 +44,7 @@ export default function Workspace() {
   )
 
   return (
-    <>
+    <Register>
       <div className="col-span-7 flex h-full min-h-screen flex-col justify-between">
         <AuthHeader />
         <div className="mx-28 mb-32">
@@ -89,6 +90,6 @@ export default function Workspace() {
         </div>
         <PrivacyPolicyFooter />
       </div>
-    </>
+    </Register>
   )
 }
