@@ -15,19 +15,13 @@
 
 ## Overview
 
----
-
 Based on the "Artificium - AI Content Creation App - UI Kit" public prototype from [Figma](https://www.figma.com/community/file/1237505388738737733)
 
 ## Motivation
 
----
-
 This application purpose is mainly for studies over the Next.js 13 and TDD development with Cypress.
 
 ## How to setup
-
----
 
 first clone or download the repository
 
@@ -59,4 +53,19 @@ or with yarn
 
 ```
 yarn dev
+```
+
+**Firebase Configuration**
+
+For Firebase configuration follow the model file ".env.example" to create a ".env.development" or ".env.production"
+
+**Run documentation (Storybook)**
+
+```
+npm run storybook
+```
+
+**Run unit testing (Cypress)**
+```
+npm run component
 ```
