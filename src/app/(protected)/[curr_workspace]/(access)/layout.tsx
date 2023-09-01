@@ -16,7 +16,7 @@ export default function WorkspaceLayout({
   const hasAccessToWorkspace = false
 
   return (
-    <main className="grid grid-cols-2">
+    <main className="container grid xl:grid-cols-2">
       <div className="flex h-full min-h-screen flex-col justify-between">
         <AuthHeader />
         {hasAccessToWorkspace ? join : request}
@@ -25,7 +25,7 @@ export default function WorkspaceLayout({
       <Image
         src={sideImage}
         alt="Side Image"
-        className="h-full min-h-screen rounded-s-3xl object-cover"
+        className="hidden xl:block h-full min-h-screen rounded-s-3xl object-cover"
       />
     </main>
   )

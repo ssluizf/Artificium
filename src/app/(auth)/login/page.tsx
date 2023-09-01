@@ -104,7 +104,7 @@ export default function Login() {
   }
 
   return (
-    <main className="grid grid-cols-2">
+    <main className="container grid xl:grid-cols-2">
       <div className="flex h-full min-h-screen flex-col justify-between">
         <AuthHeader />
         <div className="mx-28 mb-32">
@@ -179,7 +179,7 @@ export default function Login() {
       <Image
         src={sideImage}
         alt="Side Image"
-        className="h-full min-h-screen rounded-s-3xl object-cover"
+        className="hidden xl:block h-full min-h-screen rounded-s-3xl object-cover"
       />
     </main>
   )
