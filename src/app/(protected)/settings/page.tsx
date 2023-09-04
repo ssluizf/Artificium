@@ -71,7 +71,7 @@ export default function SettingsPage() {
           <p className="text-heading-s-semibold text-noble-black-0">
             Create your Profile
           </p>
-          <p className="text-body-l-medium text-noble-black-300">
+          <p className="text-body-m-medium text-noble-black-300 md:text-body-l-medium">
             Connect with your team and bring your creative ideas to life.
           </p>
         </div>

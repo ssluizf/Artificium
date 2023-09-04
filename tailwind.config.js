@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+let plugin = require("tailwindcss/plugin")
+
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
@@ -410,10 +412,28 @@ module.exports = {
     container: {
       center: true,
       screens: {
-        '2xl': '1536px',
+        "2xl": "1536px",
       },
     },
     extend: {},
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    plugin(function ({ matchVariant, theme }) {
+      matchVariant(
+        "nth",
+        (value) => {
+          return `&:nth-child(${value})`
+        },
+        {
+          values: {
+            DEFAULT: "n",
+            "2n": "2n",
+            "3n": "3n",
+            "4n": "4n",
+          },
+        }
+      )
+    }),
+  ],
 }

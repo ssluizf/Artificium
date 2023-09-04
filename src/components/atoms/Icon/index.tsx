@@ -17,9 +17,9 @@ export default function Icon({
   ...props
 }: IconProps & SVGAttributes<HTMLInputElement>) {
   const iconClasses = {
-    large: "icon--large",
-    medium: "icon--medium",
-    small: "icon--small",
+    large: "icon--medium sm:icon--large",
+    medium: "icon--small sm:icon--medium",
+    small: "icon--xs sm:icon--small",
   }
   const IconComponent = Icons[name]
 

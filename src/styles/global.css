@@ -73,13 +73,16 @@
   }
 
   .icon--large {
-    @apply h-6 w-6;
+    @apply min-w-min h-6 w-6;
   }
   .icon--medium {
-    @apply h-5 w-5;
+    @apply min-w-min h-5 w-5;
   }
   .icon--small {
-    @apply h-4 w-4;
+    @apply min-w-min h-4 w-4;
+  }
+  .icon--xs {
+    @apply min-w-min h-3 w-3;
   }
 
   .icon--bold {

@@ -22,8 +22,8 @@ export default function Button({
     tertiary: "btn--tertiary",
     ghost: "btn--ghost",
     glass: "btn--glass",
-    large: "btn--large",
-    medium: "btn--medium",
+    large: "btn--medium sm:btn--large",
+    medium: "btn--small sm:btn--medium",
     small: "btn--small",
   }
 

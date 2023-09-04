@@ -140,8 +140,8 @@ export default function Register() {
       </Snackbar>
       <div className="col-span-7 flex h-full min-h-screen flex-col justify-between">
         <AuthHeader showLoginLink />
-        <div className="mx-28 mb-32">
-          <p className="text-heading-xl-regular text-noble-black-0">
+        <div className="mx-auto mb-24 w-full max-w-md px-4 sm:mx-24 sm:mb-28 sm:w-auto sm:max-w-none md:mx-28 md:mb-32">
+          <p className="text-heading-m-regular text-noble-black-0 sm:text-heading-l-regular md:text-heading-xl-regular">
             Connect with your team and bring your creative ideas to life.
           </p>
           <form className="mt-16 space-y-12" onSubmit={handleSubmit(onSubmit)}>
@@ -152,8 +152,8 @@ export default function Register() {
               icon="google"
             />
             <Divider>or continue with e-mail</Divider>
-            <div className="grid grid-cols-2 grid-rows-2 gap-6">
-              <div className="col-span-2">
+            <div className="grid gap-6 sm:grid-cols-2 sm:grid-rows-2">
+              <div className="sm:col-span-2">
                 <Input
                   label="E-mail"
                   placeholder="E-mail"
@@ -186,7 +186,7 @@ export default function Register() {
               {"I agree with "}
               <Link
                 href="/register"
-                className="bg-blue-green-500 bg-clip-text text-body-l-semibold text-transparent"
+                className="bg-blue-green-500 bg-clip-text text-body-m-semibold text-transparent sm:text-body-l-semibold"
               >
                 Terms and conditions
               </Link>

@@ -47,12 +47,12 @@ export default function Workspace() {
     <Register>
       <div className="col-span-7 flex h-full min-h-screen flex-col justify-between">
         <AuthHeader />
-        <div className="mx-28 mb-32">
+        <div className="mx-auto mb-24 w-full max-w-md px-4 sm:mx-24 sm:mb-28 sm:w-auto sm:max-w-none md:mx-28 md:mb-32">
           <div className="space-y-6">
-            <p className="text-heading-xl-regular text-noble-black-0">
+            <p className="text-heading-m-regular sm:text-heading-l-regular md:text-heading-xl-regular text-noble-black-0">
               Join or Create a Workspace
             </p>
-            <p className="text-body-xl-medium text-noble-black-300">
+            <p className="text-body-m-medium sm:text-body-l-medium md:text-body-xl-medium text-noble-black-300">
               Connect with others by joining an existing workspace or create a
               new one to collaborate with your team.
             </p>
@@ -61,7 +61,7 @@ export default function Workspace() {
             className="mt-16 space-y-12"
             onSubmit={handleSubmit(onSubmitJoin)}
           >
-            <div className="flex justify-between space-x-6">
+            <div className="flex flex-col justify-between space-y-6 md:flex-row md:space-y-0 md:space-x-6">
               <Input
                 placeholder="Your workspace URL"
                 className="text-end"

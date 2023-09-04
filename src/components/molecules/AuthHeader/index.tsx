@@ -8,14 +8,16 @@ type AuthHeaderProps = {
 export default function AuthHeader({ showLoginLink }: AuthHeaderProps) {
   return (
     <header
-      className="mx-12 mb-32 mt-12
-    flex items-center justify-between"
+      className="mx-auto mb-12 mt-8 flex items-center justify-between sm:mx-8 sm:mb-28 sm:mt-8
+        md:mx-12 md:mb-32 md:mt-12"
     >
-      <Logo name="logoSymbolGradient" className="h-8 w-8" />
+      <Link href="/login">
+        <Logo name="logoSymbolGradient" className="h-8 w-8" />
+      </Link>
       {showLoginLink && (
         <Link
           href="/login"
-          className="bg-blue-green-500 bg-clip-text text-body-l-semibold text-transparent"
+          className="hidden bg-blue-green-500 bg-clip-text text-body-l-semibold text-transparent sm:block"
         >
           Log In
         </Link>

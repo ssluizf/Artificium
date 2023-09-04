@@ -37,7 +37,7 @@ type FormData = yup.InferType<typeof schema>
 
 export default function Login() {
   const router = useRouter()
-  const [isSending, setIsSending] = useState(false);
+  const [isSending, setIsSending] = useState(false)
 
   const {
     register,
@@ -66,7 +66,7 @@ export default function Login() {
     async (userCredential: any) => {
       if (!userCredential) return
 
-      setIsSending(true);
+      setIsSending(true)
 
       await fetch("/api/login", {
         method: "POST",
@@ -79,14 +79,16 @@ export default function Login() {
           const userData = await fetchUser(userUid)
 
           if (userData?.currWorkspaceId && userData?.currProjectId) {
-            router.push(`/${userData.currWorkspaceId}/${userData.currProjectId}`)
+            router.push(
+              `/${userData.currWorkspaceId}/${userData.currProjectId}`
+            )
           } else {
             router.push("/")
           }
         }
       })
 
-      setIsSending(false);
+      setIsSending(false)
     },
     [router, fetchUser]
   )
@@ -107,19 +109,22 @@ export default function Login() {
     <main className="container grid xl:grid-cols-2">
       <div className="flex h-full min-h-screen flex-col justify-between">
         <AuthHeader />
-        <div className="mx-28 mb-32">
+        <div className="mx-auto mb-24 w-full max-w-md px-4 sm:mx-24 sm:mb-28 sm:w-auto sm:max-w-none md:mx-28 md:mb-32">
           <div className="space-y-6">
-            <p className="text-heading-xl-regular text-noble-black-0">
+            <p className="text-heading-m-regular text-noble-black-0 sm:text-heading-l-regular md:text-heading-xl-regular">
               {"Let's get "}
-              <span className="bg-day-blue-blue-green-500 bg-clip-text text-heading-xl-bold text-transparent">
+              <span className="bg-day-blue-blue-green-500 bg-clip-text text-heading-m-bold text-transparent sm:text-heading-l-bold md:text-heading-xl-bold">
                 creative!
               </span>
             </p>
-            <p className="text-body-xl-medium text-noble-black-300">
+            <p className="text-body-m-medium text-noble-black-300 sm:text-body-l-medium md:text-body-xl-medium">
               Log in to Artificium to start creating magic.
             </p>
           </div>
-          <form className="mt-16 space-y-12" onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="mt-12 space-y-8 sm:mt-16 sm:space-y-12"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="space-y-6">
               <Input
                 autoComplete="email"
@@ -139,9 +144,9 @@ export default function Login() {
                 {...register("password")}
               />
             </div>
-            <div className="flex justify-between">
+            <div className="flex flex-wrap justify-between gap-2">
               <Checkbox>Remember me</Checkbox>
-              <p className="bg-blue-green-500 bg-clip-text text-body-l-semibold text-transparent">
+              <p className="bg-blue-green-500 bg-clip-text text-body-m-semibold text-transparent sm:text-body-l-semibold">
                 Forgot Password?
               </p>
             </div>
@@ -153,7 +158,7 @@ export default function Login() {
               isLoading={isSending}
             />
             <Divider>or continue with</Divider>
-            <div className="flex space-x-6">
+            <div className="flex flex-col space-y-6 sm:flex-row sm:space-x-6 sm:space-y-0">
               <SocialLoginButton
                 type="button"
                 onClick={signInWithGoogle}
@@ -164,8 +169,8 @@ export default function Login() {
             </div>
           </form>
         </div>
-        <div className="mb-12 ml-12">
-          <p className="text-body-l-semibold text-noble-black-400">
+        <div className="mb-12 text-center sm:ml-12 sm:text-left">
+          <p className="text-body-m-semibold text-noble-black-400 md:text-body-l-semibold">
             {"Don’t have an account? "}
             <Link
               href="/register"
@@ -179,7 +184,7 @@ export default function Login() {
       <Image
         src={sideImage}
         alt="Side Image"
-        className="hidden xl:block h-full min-h-screen rounded-s-3xl object-cover"
+        className="hidden h-full min-h-screen rounded-s-3xl object-cover xl:block"
       />
     </main>
   )

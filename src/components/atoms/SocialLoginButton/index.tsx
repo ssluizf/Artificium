@@ -21,8 +21,8 @@ export default function SocialLoginButton({
   ...props
 }: SocialLoginButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
   const iconClasses = {
-    apple: "icon--large",
-    google: "icon--medium",
+    apple: "icon--medium sm:icon--large",
+    google: "icon--small sm:icon--medium",
   }
 
   const IconComponent = Icons[icon]
@@ -30,11 +30,11 @@ export default function SocialLoginButton({
   return (
     <button
       data-test="button"
-      className={`btn--tertiary btn--large flex w-full items-center justify-center space-x-3 whitespace-nowrap`}
+      className={`btn--tertiary btn--medium sm:btn--large flex w-full items-center justify-center space-x-3 whitespace-nowrap`}
       {...props}
     >
       <IconComponent data-test="icon" className={iconClasses[icon]} />
-      <span>{label}</span>
+      <span className="mt-[2px] sm:mt-0">{label}</span>
     </button>
   )
 }
