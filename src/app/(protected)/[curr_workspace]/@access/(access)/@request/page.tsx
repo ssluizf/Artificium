@@ -1,3 +1,7 @@
+"use client"
+
+import Link from "next/link"
+
 import Avatar from "@/components/atoms/Avatar"
 import Button from "@/components/atoms/Button"
 
@@ -38,7 +42,9 @@ export default function Request() {
         <p className="whitespace-nowrap text-body-s-medium text-noble-black-400">
           or
         </p>
-        <Button label="Back" variant="tertiary" size="large" />
+        <Link href="/">
+          <Button label="Back" variant="tertiary" size="large" />
+        </Link>
       </div>
     </div>
   )

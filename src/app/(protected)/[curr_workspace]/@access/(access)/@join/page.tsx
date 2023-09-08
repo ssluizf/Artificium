@@ -1,3 +1,12 @@
+"use client"
+
+import { useContext } from "react"
+import { usePathname, useRouter } from "next/navigation"
+import Link from "next/link"
+import { doc, deleteDoc, setDoc, updateDoc } from "firebase/firestore"
+
+import { InvitationContext, InvitationContextType } from "../layout"
+import { db } from "@/config/firebase-config"
 import Avatar from "@/components/atoms/Avatar"
 import Button from "@/components/atoms/Button"
 
@@ -12,6 +21,39 @@ import avatar from "@/assets/images/Vertexia.png"
 const persons = [person1, person2, person3, person4, person5, person6]
 
 export default function Join() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const invitation = useContext<InvitationContextType | null>(InvitationContext)
+
+  const postNewMember = async (
+    uid: string,
+    workspaceId: string,
+    role: string
+  ) => {
+    const workspacesRef = doc(db, "workspaces", workspaceId)
+    const referenceNewMember = `roles.${uid}`
+
+    await updateDoc(workspacesRef, {
+      [referenceNewMember]: role
+    })
+  }
+
+  const deleteInvite = async (uid: string, workspaceId: string) => {
+    const workspacesRef = doc(db, "workspaces", workspaceId, "invitations", uid)
+
+    await deleteDoc(workspacesRef)
+  }
+
+  async function joinWorkspace() {
+    const { role, inviteTo } = invitation as InvitationContextType
+    const workspaceId = pathname.split("/")[1]
+
+    await postNewMember(inviteTo, workspaceId, role)
+    await deleteInvite(inviteTo, workspaceId)
+
+    window.location.reload();
+  }
+
   return (
     <div
       className="mx-auto mb-24 flex w-full max-w-md flex-col items-center space-y-16
@@ -28,13 +70,15 @@ export default function Join() {
             Vertexia
           </p>
           <p className="text-body-m-medium text-stem-green-500 sm:text-body-l-medium md:text-body-xl-medium">
-            vertexia.artficium.app
+            vertexia.artificium.app
           </p>
         </div>
       </div>
       <div className="flex items-center space-x-6">
-        <Button label="Change workspace" variant="ghost" size="large" />
-        <Button label="Join Now" size="large" />
+        <Link href="/">
+          <Button label="Change workspace" variant="ghost" size="large" />
+        </Link>
+        <Button label="Join Now" size="large" onClick={joinWorkspace} />
       </div>
       <div className="flex flex-wrap items-center justify-center gap-6">
         <div className="flex">
