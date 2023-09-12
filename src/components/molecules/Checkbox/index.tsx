@@ -15,7 +15,7 @@ const Checkbox = forwardRef(function Checkbox(
     <div className="flex items-center space-x-2 sm:space-x-4">
       <label
         className="relative flex
-          h-5 w-5 sm:h-6 sm:w-6 cursor-pointer items-center text-day-blue-900"
+          h-5 w-5 cursor-pointer items-center text-day-blue-900 sm:h-6 sm:w-6"
         htmlFor="checkbox-field"
       >
         <input
@@ -30,8 +30,8 @@ const Checkbox = forwardRef(function Checkbox(
         ></input>
         <Icon
           name="check"
-          className="icon--bold min-w-min invisible absolute bottom-0 left-0
-            right-0 top-0 m-auto h-3 w-3 peer-checked:visible"
+          className="icon--bold invisible absolute bottom-0 left-0 right-0
+            top-0 m-auto h-3 w-3 min-w-min peer-checked:visible"
         />
       </label>
       <label

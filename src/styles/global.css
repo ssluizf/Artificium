@@ -46,6 +46,9 @@
   .btn--small {
     @apply h-8 rounded-lg px-3 text-body-s-semibold before:rounded-lg;
   }
+  .btn--xs {
+    @apply h-6 rounded-md px-2 text-body-s-semibold before:rounded-md;
+  }
 
   .btn__loading--primary {
     @apply border-transparent border-r-day-blue-900 border-t-day-blue-900;
@@ -99,6 +102,9 @@
   }
   .btn-icon.btn--small {
     @apply w-8;
+  }
+  .btn-icon.btn--xs {
+    @apply w-6;
   }
 
   .input--default {

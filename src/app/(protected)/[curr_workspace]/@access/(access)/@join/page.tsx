@@ -34,7 +34,7 @@ export default function Join() {
     const referenceNewMember = `roles.${uid}`
 
     await updateDoc(workspacesRef, {
-      [referenceNewMember]: role
+      [referenceNewMember]: role,
     })
   }
 
@@ -51,7 +51,7 @@ export default function Join() {
     await postNewMember(inviteTo, workspaceId, role)
     await deleteInvite(inviteTo, workspaceId)
 
-    window.location.reload();
+    window.location.reload()
   }
 
   return (

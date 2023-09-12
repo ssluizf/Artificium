@@ -16,8 +16,10 @@ const persons = [person1, person2, person3, person4, person5, person6]
 
 export default function Request() {
   return (
-    <div className="mx-auto mb-24 flex w-full max-w-md flex-col items-center space-y-16 px-4
-      sm:mx-24 sm:mb-44 sm:w-auto sm:max-w-none md:mx-28 md:mb-48">
+    <div
+      className="mx-auto mb-24 flex w-full max-w-md flex-col items-center space-y-16 px-4
+      sm:mx-24 sm:mb-44 sm:w-auto sm:max-w-none md:mx-28 md:mb-48"
+    >
       <div className="flex">
         {persons.map((person, index) => (
           <Avatar

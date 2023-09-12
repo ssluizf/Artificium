@@ -7,11 +7,11 @@ export async function POST(request: NextRequest) {
     value: "",
     maxAge: 0,
     httpOnly: true,
-    secure: true
+    secure: true,
   }
 
   /* @ts-ignore */
   cookies().set(options)
-  
+
   return NextResponse.json({}, { status: 200 })
 }

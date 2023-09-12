@@ -11,23 +11,25 @@ type IconProps = {
   size?: size
 }
 
+export const iconClasses = {
+  large: "icon--medium sm:icon--large",
+  medium: "icon--small sm:icon--medium",
+  small: "icon--xs sm:icon--small",
+}
+
 export default function Icon({
   name,
   size = "medium",
+  className,
   ...props
 }: IconProps & SVGAttributes<HTMLInputElement>) {
-  const iconClasses = {
-    large: "icon--medium sm:icon--large",
-    medium: "icon--small sm:icon--medium",
-    small: "icon--xs sm:icon--small",
-  }
   const IconComponent = Icons[name]
 
   return (
     <IconComponent
       data-test="icon"
       name={name}
-      className={`${iconClasses[size]}`}
+      className={`${iconClasses[size]} ${className}`}
       {...props}
     />
   )

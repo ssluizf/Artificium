@@ -16,7 +16,7 @@ import { doc, getDoc } from "firebase/firestore"
 import { auth, db, provider } from "@/config/firebase-config"
 
 import Button from "@/components/atoms/Button"
-import PrivacyPolicyFooter from "@/components/atoms/PrivacyPoliceFooter"
+import PrivacyPolicyFooter from "@/components/atoms/PrivacyPolicyFooter"
 import Divider from "@/components/atoms/Divider"
 import SocialLoginButton from "@/components/atoms/SocialLoginButton"
 import Input from "@/components/molecules/Input"

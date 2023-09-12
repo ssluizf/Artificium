@@ -56,3 +56,11 @@ export const Small: Story = {
     size: "small",
   },
 }
+
+export const Loading: Story = {
+  args: {
+    label: "Button",
+    size: "medium",
+    isLoading: true
+  },
+}

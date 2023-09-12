@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/image"
 
 import sideImage from "@/assets/images/illustrations-abstract-03.png"
 
@@ -13,7 +13,7 @@ export default function Register({ children }: RegisterProps) {
       <Image
         src={sideImage}
         alt="Side Image"
-        className="hidden xl:block col-span-4 h-full min-h-screen rounded-s-3xl object-cover"
+        className="col-span-4 hidden h-full min-h-screen rounded-s-3xl object-cover xl:block"
       />
     </main>
   )

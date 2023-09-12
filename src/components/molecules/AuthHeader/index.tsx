@@ -8,6 +8,7 @@ type AuthHeaderProps = {
 export default function AuthHeader({ showLoginLink }: AuthHeaderProps) {
   return (
     <header
+      data-test="auth-header"
       className="mx-auto mb-12 mt-8 flex items-center justify-between sm:mx-8 sm:mb-28 sm:mt-8
         md:mx-12 md:mb-32 md:mt-12"
     >

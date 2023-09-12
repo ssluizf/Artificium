@@ -9,7 +9,7 @@ import sideImage from "@/assets/images/illustrations-abstract-04.png"
 import { auth, db } from "@/config/firebase-config"
 
 import AuthHeader from "@/components/molecules/AuthHeader"
-import PrivacyPolicyFooter from "@/components/atoms/PrivacyPoliceFooter"
+import PrivacyPolicyFooter from "@/components/atoms/PrivacyPolicyFooter"
 
 export type InvitationContextType = {
   inviteFrom: string

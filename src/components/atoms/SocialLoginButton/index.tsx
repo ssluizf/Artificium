@@ -15,16 +15,16 @@ type SocialLoginButtonProps = {
   icon: "google" | "apple"
 }
 
+export const iconClasses = {
+  apple: "icon--medium sm:icon--large",
+  google: "icon--small sm:icon--medium",
+}
+
 export default function SocialLoginButton({
   label,
   icon,
   ...props
 }: SocialLoginButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
-  const iconClasses = {
-    apple: "icon--medium sm:icon--large",
-    google: "icon--small sm:icon--medium",
-  }
-
   const IconComponent = Icons[icon]
 
   return (

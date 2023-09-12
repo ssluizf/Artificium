@@ -189,6 +189,11 @@ import watch from "./watch.svg"
 import zoomIn from "./zoom-in.svg"
 import zoomOut from "./zoom-out.svg"
 
+import active from "./active.svg"
+import away from "./away.svg"
+import doNotDisturb from "./do-not-disturb.svg"
+import offline from "./offline.svg"
+
 const Icons = {
   alertCircleSolid,
   alertCircle,
@@ -380,6 +385,13 @@ const Icons = {
   watch,
   zoomIn,
   zoomOut,
+}
+
+export const StatusIcons = {
+  active,
+  away,
+  doNotDisturb,
+  offline,
 }
 
 export default Icons

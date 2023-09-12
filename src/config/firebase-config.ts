@@ -1,5 +1,5 @@
 import { initializeApp } from "@firebase/app"
-import { getApps, getApp } from "firebase/app";
+import { getApps, getApp } from "firebase/app"
 import { getAuth, GoogleAuthProvider } from "@firebase/auth"
 import { getFirestore } from "firebase/firestore"
 
@@ -13,9 +13,9 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 }
 
-const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig)
 const auth = getAuth(app)
 const db = getFirestore(app)
-const provider = new GoogleAuthProvider();
+const provider = new GoogleAuthProvider()
 
 export { auth, provider, db }

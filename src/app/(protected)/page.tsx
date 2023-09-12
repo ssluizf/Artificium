@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 
 import Button from "@/components/atoms/Button"
-import PrivacyPolicyFooter from "@/components/atoms/PrivacyPoliceFooter"
+import PrivacyPolicyFooter from "@/components/atoms/PrivacyPolicyFooter"
 import Divider from "@/components/atoms/Divider"
 import Input from "@/components/molecules/Input"
 import AuthHeader from "@/components/molecules/AuthHeader"

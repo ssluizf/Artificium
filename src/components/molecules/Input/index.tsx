@@ -52,8 +52,8 @@ const Input = forwardRef(function Input(
         className={`overflow-hidden rounded-lg ${inputClasses[variant]} group peer`}
       >
         <div
-          className="flex h-10 sm:h-12 w-full items-center space-x-3
-            rounded-lg bg-noble-black-600 px-4 text-noble-black-400"
+          className="flex h-10 w-full items-center space-x-3 rounded-lg
+            bg-noble-black-600 px-4 text-noble-black-400 sm:h-12"
         >
           {icon && <Icon data-test="input-icon" name={icon} size="large" />}
           <input
@@ -61,8 +61,8 @@ const Input = forwardRef(function Input(
             ref={ref}
             type={passwordVisible ? "text" : type}
             className={`${className} focus:shadow-none h-full w-full border-0
-              bg-transparent p-0 text-body-m-medium sm:text-body-l-medium
-              text-noble-black-200 outline-none placeholder:text-noble-black-300 focus:ring-0`}
+              bg-transparent p-0 text-body-m-medium text-noble-black-200
+              outline-none placeholder:text-noble-black-300 focus:ring-0 sm:text-body-l-medium`}
             {...props}
           />
           {type === "password" && (

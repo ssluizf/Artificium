@@ -38,7 +38,7 @@ export default function Snackbar({
       const timeout = setTimeout(() => {
         onClose()
       }, autoHideDuration)
-  
+
       return () => clearTimeout(timeout)
     }
   }, [open, onClose, autoHideDuration])
@@ -46,7 +46,9 @@ export default function Snackbar({
   return (
     <div
       data-test="snackbar"
-      className={`${open ? "z-0 opacity-1" : "-z-10 opacity-0"} ${variantClasses[variant]}
+      className={`${open ? "opacity-1 z-0" : "-z-10 opacity-0"} ${
+        variantClasses[variant]
+      }
         fixed right-0 top-0 z-50 mr-4
         mt-4 flex h-12 w-min items-center
         space-x-4 whitespace-nowrap rounded-lg

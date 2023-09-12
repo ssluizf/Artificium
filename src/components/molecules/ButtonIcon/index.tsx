@@ -9,22 +9,23 @@ type ButtonIconProps = {
   variant?: variant
 }
 
+export const btnClasses = {
+  primary: "btn--primary",
+  secondary: "btn--secondary",
+  tertiary: "btn--tertiary",
+  ghost: "btn--ghost",
+  glass: "btn--glass",
+  large: "btn--medium sm:btn--large",
+  medium: "btn--small sm:btn--medium",
+  small: "btn--xs sm:btn--small",
+}
+
 export default function ButtonIcon({
   icon,
   size = "medium",
   variant = "primary",
   ...props
 }: ButtonIconProps & ButtonHTMLAttributes<HTMLButtonElement>) {
-  const btnClasses = {
-    primary: "btn--primary",
-    secondary: "btn--secondary",
-    tertiary: "btn--tertiary",
-    ghost: "btn--ghost",
-    glass: "btn--glass",
-    large: "btn--large",
-    medium: "btn--medium",
-    small: "btn--small",
-  }
 
   return (
     <button

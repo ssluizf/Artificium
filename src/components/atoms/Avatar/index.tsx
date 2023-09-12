@@ -4,6 +4,7 @@ import Image, { ImageProps } from "next/image"
 export default function Avatar({ className = "", ...props }: ImageProps) {
   return (
     <Image
+      data-test="avatar"
       className={`bg-noble-black-400 object-cover ${className}`}
       {...props}
     />

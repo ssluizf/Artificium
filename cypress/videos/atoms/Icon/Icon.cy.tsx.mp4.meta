@@ -1,0 +1,16 @@
+;FFMETADATA1
+[CHAPTER]
+TIMEBASE=1/1000
+START=-2160
+END=2017
+title=<Icon /> renders with default props
+[CHAPTER]
+TIMEBASE=1/1000
+START=2084
+END=6228
+title=<Icon /> renders with size large
+[CHAPTER]
+TIMEBASE=1/1000
+START=6192
+END=10390
+title=<Icon /> renders with size small
