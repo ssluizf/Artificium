@@ -46,7 +46,7 @@ export default function Sidebar({ ...props }: SidebarProps) {
   ])
 
   return (
-    <div className="relative col-span-2 rounded-[20px] bg-noble-black-800">
+    <div className="col-span-2 flex flex-col rounded-[20px] bg-noble-black-800">
       <button
         className="flex h-24 w-full items-center justify-between border-b-2 border-noble-black-700 p-6"
         onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -75,13 +75,13 @@ export default function Sidebar({ ...props }: SidebarProps) {
           </span>
         </button>
       </div>
-      <div className="select-none space-y-6 py-6">
+      <div className="flex flex-col h-full select-none overflow-hidden pt-6">
         <p className="mx-6 text-body-s-semibold">PROJECTS</p>
-        <div className="mx-2 flex flex-col space-y-2">
+        <div className="scrollbar-hide mx-2 mt-6 flex flex-col space-y-2 overflow-auto snap-y snap-mandatory">
           {projects.map(({ id, name, iconName, iconColor }) => (
             <button
               key={`project-${id}`}
-              className={`flex flex-row items-center space-x-4 px-4 py-[14px] 
+              className={`flex flex-row items-center space-x-4 px-4 py-[14px] snap-start
               ${
                 currentProjectId === id
                   ? "rounded-lg border-t-2 border-glass-stroke bg-glass-fill"
@@ -94,14 +94,14 @@ export default function Sidebar({ ...props }: SidebarProps) {
               </p>
             </button>
           ))}
-          <button className="flex flex-row items-center space-x-4 px-4 py-[14px] text-noble-black-400">
-            <Icon name="plusCircle" />
-            <p className="text-body-m-semibold">Add new project</p>
-          </button>
         </div>
+        <button className="mx-2 mt-2 flex flex-row items-center space-x-4 px-4 py-[14px]">
+          <Icon name="plusCircle" className="text-noble-black-500" />
+          <p className="text-body-m-semibold text-noble-black-400">Add new project</p>
+        </button>
       </div>
       <button
-        className="absolute bottom-0 left-0 right-0 m-2 flex items-center justify-between
+        className="m-2 flex items-center justify-between
           rounded-2xl border-t-2 border-glass-stroke bg-glass-fill p-4"
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >

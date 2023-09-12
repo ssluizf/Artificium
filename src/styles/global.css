@@ -12,6 +12,15 @@
   input::-ms-reveal {
     display: none;
   }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
 
 @layer components {
@@ -76,16 +85,16 @@
   }
 
   .icon--large {
-    @apply min-w-min h-6 w-6;
+    @apply h-6 w-6 min-w-min;
   }
   .icon--medium {
-    @apply min-w-min h-5 w-5;
+    @apply h-5 w-5 min-w-min;
   }
   .icon--small {
-    @apply min-w-min h-4 w-4;
+    @apply h-4 w-4 min-w-min;
   }
   .icon--xs {
-    @apply min-w-min h-3 w-3;
+    @apply h-3 w-3 min-w-min;
   }
 
   .icon--bold {
